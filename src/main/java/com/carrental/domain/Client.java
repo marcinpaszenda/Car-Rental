@@ -34,6 +34,12 @@ public class Client {
     @Column(name = "IDENTIFICATION_NUMBER")
     private Long identificationNumber;
 
+    @Column(name = "PHONE_NUMBER")
+    private Long phoneNumber;
+
+    @Column(name = "EMAIL")
+    private String email;
+
     @OneToMany(
             targetEntity = CarRent.class,
             mappedBy = "client",

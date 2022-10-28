@@ -39,7 +39,7 @@ public class CarRent {
     private LocalTime returnHour;
 
     @Column(name = "RENTAL_DAY_LENGTH")
-    private int rentalDayLength;
+    private Long rentalDayLength;
 
     @Column(name = "CURRENCY")
     private Currency currency;
