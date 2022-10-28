@@ -1,13 +1,13 @@
 package com.carrental.repository;
 
-import com.carrental.domain.Car;
+import com.carrental.domain.Client;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface CarRepository extends CrudRepository<Car, Long> {
+public interface ClientRepository extends CrudRepository<Client, Long> {
 
-    List<Car> findAll();
+    List<Client> findAll();
 }

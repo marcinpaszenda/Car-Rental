@@ -27,7 +27,7 @@ public class CarController {
         return ResponseEntity.ok(carMapper.mapToCarDtoList(cars));
     }
 
-    @GetMapping("{carId}")
+    @GetMapping(value = "{carId}")
     public ResponseEntity<CarDto> getCar(@PathVariable Long carId) throws CarNotFoundException {
         return ResponseEntity.ok(carMapper.mapToCarDto(carService.findCarById(carId)));
     }

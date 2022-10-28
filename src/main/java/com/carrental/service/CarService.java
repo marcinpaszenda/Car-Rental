@@ -42,6 +42,4 @@ public class CarService {
             throw new CarNotFoundException();
         }
     }
-
-
 }

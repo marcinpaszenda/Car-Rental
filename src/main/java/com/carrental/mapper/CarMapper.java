@@ -35,5 +35,4 @@ public class CarMapper {
                 .map(this::mapToCarDto)
                 .collect(Collectors.toList());
     }
-
 }
