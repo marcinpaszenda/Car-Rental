@@ -7,6 +7,7 @@ import com.carrental.service.DriverService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,8 +15,6 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class ClientMapper {
-
-    private final DriverService driverService;
 
     public Client mapToClient(final ClientDto clientDto) {
         return Client.builder()
@@ -31,6 +30,8 @@ public class ClientMapper {
                 .identificationNumber(clientDto.getIdentificationNumber())
                 .phoneNumber(clientDto.getPhoneNumber())
                 .email(clientDto.getEmail())
+                .drivers(clientDto.getDrivers())
+                .carRents(clientDto.getCarRents())
                 .build();
     }
 
@@ -48,9 +49,8 @@ public class ClientMapper {
                 client.getIdentificationNumber(),
                 client.getPhoneNumber(),
                 client.getEmail(),
-                client.getDrivers().isEmpty()? Collections.emptyList() : client.getDrivers().stream()
-                        .map(driver -> driver.getDriverId())
-                        .collect(Collectors.toList())
+                new ArrayList<>(client.getDrivers()),
+                new ArrayList<>(client.getCarRents())
         );
     }
 

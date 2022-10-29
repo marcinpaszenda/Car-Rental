@@ -16,4 +16,5 @@ public class CarDto {
         private String registrationNumber;
         private Long carMileage;
         private String vinNumber;
+        private String carDamage;
 }

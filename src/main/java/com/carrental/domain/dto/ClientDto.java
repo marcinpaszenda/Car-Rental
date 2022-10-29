@@ -1,5 +1,6 @@
 package com.carrental.domain.dto;
 
+import com.carrental.domain.CarRent;
 import com.carrental.domain.Driver;
 import com.carrental.domain.TypeOfIdentificationNumber;
 import lombok.AllArgsConstructor;
@@ -7,8 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -29,5 +28,6 @@ public class ClientDto {
     private Long identificationNumber;
     private Long phoneNumber;
     private String email;
-    private List<Long> driversId;
+    private List<Driver> drivers;
+    private List<CarRent> carRents;
 }

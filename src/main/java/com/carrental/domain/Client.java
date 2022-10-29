@@ -1,5 +1,6 @@
 package com.carrental.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -53,6 +54,7 @@ public class Client {
     @Column(name = "EMAIL")
     private String email;
 
+    @JsonIgnore
     @OneToMany(
             targetEntity = CarRent.class,
             mappedBy = "client",
@@ -61,6 +63,7 @@ public class Client {
     )
     public List<CarRent> carRents = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(
             targetEntity = Driver.class,
             mappedBy = "client",

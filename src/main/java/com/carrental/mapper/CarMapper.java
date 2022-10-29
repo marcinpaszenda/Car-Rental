@@ -16,7 +16,8 @@ public class CarMapper {
                 carDto.getCarBrand(),
                 carDto.getRegistrationNumber(),
                 carDto.getCarMileage(),
-                carDto.getVinNumber()
+                carDto.getVinNumber(),
+                carDto.getCarDamage()
         );
     }
 
@@ -26,7 +27,8 @@ public class CarMapper {
                 car.getCarBrand(),
                 car.getRegistrationNumber(),
                 car.getCarMileage(),
-                car.getVinNumber()
+                car.getVinNumber(),
+                car.getCarDamage()
         );
     }
 

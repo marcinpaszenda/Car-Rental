@@ -21,7 +21,7 @@ public class CarReturnReport {
     @NotNull
     @GeneratedValue
     @Column(name = "CAR_RETURN_REPORT_ID")
-    private Long carReleaseReportId;
+    private Long carReturnReportId;
 
     @Column(name = "CLEAN_CAR_BODY")
     private boolean cleanCarBody;

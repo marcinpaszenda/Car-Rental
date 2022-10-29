@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class CarReturnReportDto {
 
-    private Long carReleaseReportId;
+    private Long carReturnReportId;
     private boolean cleanCarBody;
     private boolean cleanCarInterior;
     private int amountOfFuel;

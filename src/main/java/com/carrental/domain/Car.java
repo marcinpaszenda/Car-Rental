@@ -33,4 +33,7 @@ public class Car {
 
     @Column(name = "VIN_NUMBER")
     private String vinNumber;
+
+    @Column(name = "CAR_DAMAGE")
+    private String carDamage;
 }

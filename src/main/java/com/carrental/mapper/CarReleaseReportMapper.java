@@ -14,7 +14,6 @@ public class CarReleaseReportMapper {
                 carReleaseReportDto.isCleanCarInterior(),
                 carReleaseReportDto.getAmountOfFuel(),
                 carReleaseReportDto.getCarMileage(),
-                carReleaseReportDto.getCarDamage(),
                 carReleaseReportDto.getRemarks()
         );
     }
@@ -26,7 +25,6 @@ public class CarReleaseReportMapper {
                 carReleaseReport.isCleanCarInterior(),
                 carReleaseReport.getAmountOfFuel(),
                 carReleaseReport.getCarMileage(),
-                carReleaseReport.getCarDamage(),
                 carReleaseReport.getRemarks()
         );
     }

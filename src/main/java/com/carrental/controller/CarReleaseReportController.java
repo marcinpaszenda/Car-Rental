@@ -49,5 +49,4 @@ public class CarReleaseReportController {
         carReleaseReportService.deleteCarReleaseReport(carReleaseReportId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
 }

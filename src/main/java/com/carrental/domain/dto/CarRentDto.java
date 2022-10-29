@@ -1,10 +1,7 @@
 package com.carrental.domain.dto;
 
-import com.carrental.domain.Currency;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.carrental.domain.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,6 +9,7 @@ import java.time.LocalTime;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CarRentDto {
@@ -32,4 +30,9 @@ public class CarRentDto {
     private boolean registrationCertificate;
     private boolean abolitionDeductibleInDamage;
     private BigDecimal abolitionFee;
+    private Car car;
+    private Driver driver;
+    private Client client;
+    private CarReleaseReport carReleaseReport;
+    private CarReturnReport carReturnReport;
 }

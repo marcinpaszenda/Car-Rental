@@ -1,10 +1,12 @@
 package com.carrental.controller;
 
+import com.carrental.domain.CarRent;
 import com.carrental.domain.Client;
 import com.carrental.domain.Driver;
 import com.carrental.domain.dto.DriverDto;
 import com.carrental.exceptions.DriverNotFoundException;
 import com.carrental.mapper.DriverMapper;
+import com.carrental.repository.CarRentRepository;
 import com.carrental.repository.ClientRepository;
 import com.carrental.repository.DriverRepository;
 import com.carrental.service.DriverService;
@@ -25,6 +27,7 @@ public class DriverController {
     private final DriverService driverService;
     private final DriverRepository driverRepository;
     private final ClientRepository clientRepository;
+
 
     @GetMapping
     public ResponseEntity<List<DriverDto>> getAllDrivers() {
@@ -53,7 +56,13 @@ public class DriverController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/{driverId}/client/{clientId}")
+    @DeleteMapping(value = "{driverId}")
+    public ResponseEntity<Void> deleteDriver(@PathVariable Long driverId) throws DriverNotFoundException {
+        driverService.deleteDriver(driverId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @PutMapping("/{driverId}/clients/{clientId}")
     public Driver assignDriverToClient(@PathVariable Long driverId, @PathVariable Long clientId) {
         Driver driver = driverRepository.findById(driverId).get();
         Client client = clientRepository.findById(clientId).get();
@@ -61,9 +70,10 @@ public class DriverController {
         return driverRepository.save(driver);
     }
 
-    @DeleteMapping(value = "{driverId}")
-    public ResponseEntity<Void> deleteDriver(@PathVariable Long driverId) throws DriverNotFoundException {
-        driverService.deleteDriver(driverId);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
+//    @PutMapping("{driverId}/carRents/{carRentId}")
+//    public Driver assignDriverToCarRent(@PathVariable Long driverId, @PathVariable Long carRentId) {
+//        Driver driver = driverRepository.findById(driverId).get();
+//        CarRent carRent = carRentRepository.findById(driverId).get();
+//        driver.setCa
+//    }
 }

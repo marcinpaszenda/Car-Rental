@@ -34,9 +34,6 @@ public class CarReleaseReport {
     @Column(name = "CAR_MILEAGE")
     private Long carMileage;
 
-    @Column(name = "CAR_DAMAGE")
-    private String carDamage;
-
     @Column(name = "REMARKS")
     private String remarks;
 }

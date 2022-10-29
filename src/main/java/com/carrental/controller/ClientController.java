@@ -1,9 +1,12 @@
 package com.carrental.controller;
 
 import com.carrental.domain.Client;
+import com.carrental.domain.Driver;
 import com.carrental.domain.dto.ClientDto;
 import com.carrental.exceptions.ClientNotFoundException;
 import com.carrental.mapper.ClientMapper;
+import com.carrental.repository.ClientRepository;
+import com.carrental.repository.DriverRepository;
 import com.carrental.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

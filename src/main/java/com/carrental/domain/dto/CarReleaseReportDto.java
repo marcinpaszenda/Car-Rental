@@ -16,6 +16,5 @@ public class CarReleaseReportDto {
     private boolean cleanCarInterior;
     private int amountOfFuel;
     private Long carMileage;
-    private String carDamage;
     private String remarks;
 }
