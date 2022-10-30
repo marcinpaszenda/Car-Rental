@@ -31,11 +31,11 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(CarReturnReportNotFoundException.class)
     public ResponseEntity<Object> handleCarReturnReportNotFoundException(CarReturnReportNotFoundException carReturnReportNotFoundException) {
-        return new ResponseEntity<>("Car return report with given ID doesn't exist)", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Car return report with given ID doesn't exist", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(CarRentNotFoundException.class)
     public ResponseEntity<Object> handleCarRentNotFoundException(CarRentNotFoundException carRentNotFoundException) {
-        return new ResponseEntity<>("Car rent with given ID doesn't exist)", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Car rent with given ID doesn't exist", HttpStatus.BAD_REQUEST);
     }
 }
