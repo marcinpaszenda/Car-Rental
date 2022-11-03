@@ -54,6 +54,15 @@ public class Client {
     @Column(name = "EMAIL")
     private String email;
 
+        @JsonIgnore
+    @OneToMany(
+            targetEntity = Driver.class,
+            mappedBy = "client",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Driver> drivers = new ArrayList<>();
+
     @JsonIgnore
     @OneToMany(
             targetEntity = CarRent.class,
@@ -63,12 +72,4 @@ public class Client {
     )
     public List<CarRent> carRents = new ArrayList<>();
 
-    @JsonIgnore
-    @OneToMany(
-            targetEntity = Driver.class,
-            mappedBy = "client",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    public List<Driver> drivers = new ArrayList<>();
 }

@@ -42,7 +42,7 @@ public class CarReleaseReportTestSuite {
     }
 
     @Test
-    public void findCArReleaseReportTest() {
+    public void findCarReleaseReportTest() {
         //Given
         carReleaseReportRepository.save(carReleaseReport);
         //When
