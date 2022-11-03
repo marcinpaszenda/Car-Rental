@@ -4,8 +4,6 @@ import com.carrental.domain.Client;
 import com.carrental.domain.Driver;
 import com.carrental.exceptions.DriverNotFoundException;
 import com.carrental.repository.DriverRepository;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -30,7 +28,6 @@ public class DriverServiceTest {
 
     @Test
     void getAllDriversTest() {
-
         //Given
         Client client = new Client();
         List<Driver> driverList = new ArrayList<>();
@@ -47,7 +44,6 @@ public class DriverServiceTest {
 
     @Test
     void getDriverTest() throws DriverNotFoundException {
-
         //Given
         Client client = new Client();
         Driver driver1 = new Driver(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L, client);
@@ -60,7 +56,6 @@ public class DriverServiceTest {
 
     @Test
     void saveDriverTest() throws DriverNotFoundException {
-
         //Given
         Client client = new Client();
         Driver driver1 = new Driver(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L, client);
