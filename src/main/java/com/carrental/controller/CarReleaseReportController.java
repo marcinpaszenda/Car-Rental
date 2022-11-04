@@ -35,7 +35,7 @@ public class CarReleaseReportController {
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CarReleaseReport> updateCarReleaseReport(@RequestBody CarReleaseReportDto carReleaseReportDto)
+    public ResponseEntity<CarReleaseReportDto> updateCarReleaseReport(@RequestBody CarReleaseReportDto carReleaseReportDto)
             throws CarReleaseReportNotFoundException {
         CarReleaseReport carReleaseReport = carReleaseReportMapper.mapToCarReleaseReport(carReleaseReportDto);
         CarReleaseReport updatedCarReleaseReport = carReleaseReportService.updateCarReleaseReport(carReleaseReport);
