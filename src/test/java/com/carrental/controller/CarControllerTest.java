@@ -109,7 +109,6 @@ public class CarControllerTest {
                 .andExpect(MockMvcResultMatchers.status().is(201));
     }
 
-/*
     @Test
     void shouldUpdateCar() throws Exception {
         //Given
@@ -137,8 +136,6 @@ public class CarControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.registrationNumber", Matchers.is("SK22009")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.carDamage", Matchers.is("broken window")));
     }
-*/
-
 
     @Test
     void shouldDeleteCar() throws Exception {

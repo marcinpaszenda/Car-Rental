@@ -44,8 +44,7 @@ public class CarController {
     public ResponseEntity<CarDto> updateCar(@RequestBody CarDto carDto) throws CarNotFoundException {
         Car car = carMapper.mapToCar(carDto);
         Car updatedCar = carService.updateCar(car);
-        carMapper.mapToCarDto(updatedCar);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(carMapper.mapToCarDto(updatedCar));
     }
 
     @DeleteMapping(value = "{carId}")

@@ -73,32 +73,32 @@ public class CarReleaseReportControllerTest {
                 .andExpect(MockMvcResultMatchers.status().is(201));
     }
 
-//    @Test
-//    void shouldUpdateCarReleaseReport() throws Exception {
-//        //Given
-//        CarReleaseReport carReleaseReport = new CarReleaseReport(1L, true, true, 100, 34500L, null);
-//        CarReleaseReportDto carReleaseReportDto = new CarReleaseReportDto(1L, true, true, 100, 34500L, null);
-//        CarReleaseReport updateCarReleaseReport = new CarReleaseReport(2L, false, true, 100, 40000L, null);
-//        CarReleaseReportDto updateCarReleaseReportDto = new CarReleaseReportDto(2L, false, true, 100, 40000L, null);
-//
-//        when(mapper.mapToCarReleaseReport(carReleaseReportDto)).thenReturn(carReleaseReport);
-//        when(service.updateCarReleaseReport(carReleaseReport)).thenReturn(updateCarReleaseReport);
-//        when(mapper.mapToCarReleaseReportDto(any())).thenReturn(updateCarReleaseReportDto);
-//
-//        Gson gson = new Gson();
-//        String jsonContent = gson.toJson(updateCarReleaseReportDto);
-//
-//        //When & Then
-//        mockMvc
-//                .perform(MockMvcRequestBuilders
-//                        .put("/v1/carReleaseReport")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .characterEncoding("UTF-8")
-//                        .content(jsonContent))
-//                .andExpect(MockMvcResultMatchers.status().isOk())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.carReleaseReportId", Matchers.is(2)))
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.carMileage", Matchers.is(40000)));
-//    }
+    @Test
+    void shouldUpdateCarReleaseReport() throws Exception {
+        //Given
+        CarReleaseReport carReleaseReport = new CarReleaseReport(1L, true, true, 100, 34500L, "ok");
+        CarReleaseReportDto carReleaseReportDto = new CarReleaseReportDto(1L, true, true, 100, 34500L, "ok");
+        CarReleaseReport updateCarReleaseReport = new CarReleaseReport(2L, false, true, 100, 40000L, "ok");
+        CarReleaseReportDto updateCarReleaseReportDto = new CarReleaseReportDto(2L, false, true, 100, 40000L, "ok");
+
+        when(mapper.mapToCarReleaseReport(carReleaseReportDto)).thenReturn(carReleaseReport);
+        when(service.updateCarReleaseReport(carReleaseReport)).thenReturn(updateCarReleaseReport);
+        when(mapper.mapToCarReleaseReportDto(any())).thenReturn(updateCarReleaseReportDto);
+
+        Gson gson = new Gson();
+        String jsonContent = gson.toJson(updateCarReleaseReportDto);
+
+        //When & Then
+        mockMvc
+                .perform(MockMvcRequestBuilders
+                        .put("/v1/carReleaseReport")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("UTF-8")
+                        .content(jsonContent))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.carReleaseReportId", Matchers.is(2)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.carMileage", Matchers.is(40000)));
+    }
 
     @Test
     void shouldDeleteCarReleaseReport() throws Exception {

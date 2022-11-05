@@ -6,6 +6,7 @@ import com.carrental.exceptions.CarReleaseReportNotFoundException;
 import com.carrental.mapper.CarReleaseReportMapper;
 import com.carrental.service.CarReleaseReportService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -39,8 +40,7 @@ public class CarReleaseReportController {
             throws CarReleaseReportNotFoundException {
         CarReleaseReport carReleaseReport = carReleaseReportMapper.mapToCarReleaseReport(carReleaseReportDto);
         CarReleaseReport updatedCarReleaseReport = carReleaseReportService.updateCarReleaseReport(carReleaseReport);
-        carReleaseReportMapper.mapToCarReleaseReportDto(updatedCarReleaseReport);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(carReleaseReportMapper.mapToCarReleaseReportDto(updatedCarReleaseReport));
     }
 
     @DeleteMapping(value = "{carReleaseReportId}")
