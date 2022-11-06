@@ -49,11 +49,10 @@ public class DriverController {
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Driver> updateDriver(@RequestBody DriverDto driverDto) throws DriverNotFoundException {
+    public ResponseEntity<DriverDto> updateDriver(@RequestBody DriverDto driverDto) throws DriverNotFoundException {
         Driver driver = driverMapper.mapToDriver(driverDto);
         Driver updatedDriver = driverService.updateDriver(driver);
-        driverMapper.mapToDriverDto(updatedDriver);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(driverMapper.mapToDriverDto(updatedDriver));
     }
 
     @DeleteMapping(value = "{driverId}")
@@ -69,11 +68,4 @@ public class DriverController {
         driver.setClient(client);
         return driverRepository.save(driver);
     }
-
-//    @PutMapping("{driverId}/carRents/{carRentId}")
-//    public Driver assignDriverToCarRent(@PathVariable Long driverId, @PathVariable Long carRentId) {
-//        Driver driver = driverRepository.findById(driverId).get();
-//        CarRent carRent = carRentRepository.findById(driverId).get();
-//        driver.setCa
-//    }
 }

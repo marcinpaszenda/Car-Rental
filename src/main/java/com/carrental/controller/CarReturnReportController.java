@@ -35,12 +35,11 @@ public class CarReturnReportController {
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CarReturnReport> updateCarReturnReport(@RequestBody CarReturnReportDto carReturnReportDto)
+    public ResponseEntity<CarReturnReportDto> updateCarReturnReport(@RequestBody CarReturnReportDto carReturnReportDto)
             throws CarReturnReportNotFoundException {
         CarReturnReport carReturnReport = carReturnReportMapper.mapToCarReturnReport(carReturnReportDto);
         CarReturnReport updatedCarReturnReport = carReturnReportService.updateCarReturnReport(carReturnReport);
-        carReturnReportMapper.mapToCarReturnReportDto(updatedCarReturnReport);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(carReturnReportMapper.mapToCarReturnReportDto(updatedCarReturnReport));
     }
 
     @DeleteMapping(value = "{carReturnReportId}")

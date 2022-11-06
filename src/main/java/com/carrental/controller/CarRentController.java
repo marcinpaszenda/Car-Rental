@@ -50,11 +50,10 @@ public class CarRentController {
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CarRent> updateCarRent(@RequestBody CarRentDto carRentDto) throws CarRentNotFoundException {
+    public ResponseEntity<CarRentDto> updateCarRent(@RequestBody CarRentDto carRentDto) throws CarRentNotFoundException {
         CarRent carRent = carRentMapper.mapToCarRent(carRentDto);
         CarRent updatedCarRent = carRentService.updateCarRent(carRent);
-        carRentMapper.mapToCarRentDto(updatedCarRent);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(carRentMapper.mapToCarRentDto(updatedCarRent));
     }
 
     @DeleteMapping(value = "{carRentId}")

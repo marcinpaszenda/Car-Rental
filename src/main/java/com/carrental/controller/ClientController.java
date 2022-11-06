@@ -44,11 +44,10 @@ public class ClientController {
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Client> updateClient(@RequestBody ClientDto clientDto) throws ClientNotFoundException {
+    public ResponseEntity<ClientDto> updateClient(@RequestBody ClientDto clientDto) throws ClientNotFoundException {
         Client client = clientMapper.mapToClient(clientDto);
         Client updatedClient = clientService.updateClient(client);
-        clientMapper.mapToClientDto(updatedClient);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(clientMapper.mapToClientDto(updatedClient));
     }
 
     @DeleteMapping(value = "{clientId}")
