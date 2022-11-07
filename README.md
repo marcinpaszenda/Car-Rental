@@ -3,8 +3,8 @@
 ### The aim of the project is to create an application for managing a car rental company. Using the application, employees will be able to enter rental orders into the database, generate rental contracts and manage the car fleet.
 
 The project consists of two applications
-- A beckend application in Java, using the REST API architecture,
-- A Java frondend application that uses the Vaadin framework,
+- A backend application in Java, using the REST API architecture,
+- A Java frontend application that uses the Vaadin framework,
 - Both applications communicate with each other using RestTemplate.
 
 [![lemarCar](https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/304075079_501262355335563_5869184889274694793_n.png?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=UnsIXi9KXCMAX8wrXYc&_nc_ht=scontent-waw1-1.xx&oh=00_AfDzfznf_08yBKoLGQ6WMRNmrbX-mfYe49qs5MdNbZMapA&oe=63695481)](http://www.lemarcar.pl/)
@@ -24,13 +24,13 @@ The project uses the following technologies and tools to work properly:
 
 ### How to run
 
-- Beckend: sample query [link]
+- Backend: sample query [link]
 - Frontend: [repository_link]
 
 ### Project status
 
-I created a beckend application that supports the database and deployed it to heroku. 
-This application connects to the front using RestTemplete. I am currently starting work on a GUI with Vaadin. 
+I created a backend application that supports the database and deployed it to heroku. 
+This application connects to the front using RestTemplate. I am currently starting work on a GUI with Vaadin. 
 Then I will start developing new functionalities.
 
 
@@ -54,7 +54,7 @@ marcinpaszenda@gmail.com
 Za pomocą aplikacji pracownicy będą mogli wprowadzać zlecenia wynajmu do bazy danych, generować umowy najmu oraz zarządzać flotą samochodową.
 
 Projekt składa się z dwóch aplikacji:
-- Beckend w Javie, wykorzystująca architekturę REST API,
+- Backend w Javie, wykorzystująca architekturę REST API,
 - Aplikacja frontendowa napisania w Javie, z wykorzystaniem frameworka Vaadin,
 - Obie aplikacje komunikują się ze sobą za pomocą RestTemplate.
 
@@ -75,13 +75,13 @@ Projekt wykorzystuje następujące technologie i narzędzia:
 
 ### Uruchomienie
 
-- Beckend: przykładowe zapytanie [link]
+- Backend: przykładowe zapytanie [link]
 - Frontend: na ten moment jedynie kod do repozytorium [repository_link]
 
 ### Status projektu
 
-Wstępnie utworzyłem aplikację beckendową która obsługuje bazę danych i wdrożyłem ją za pomocą narzędzia heroku. 
-Aplikacja ta łączy się z frontem za pomocą RestTemplete. Aktualnie zaczynam pracę nad GUI wykorzystując do tego framework Vaadin. 
+Wstępnie utworzyłem aplikację backendową która obsługuje bazę danych i wdrożyłem ją za pomocą narzędzia heroku. 
+Aplikacja ta łączy się z frontem za pomocą RestTemplate. Aktualnie zaczynam pracę nad GUI wykorzystując do tego framework Vaadin. 
 Po tym etapie zacznę dodawać i rozwijać kolejne funkcjonalności.
 
 
