@@ -69,24 +69,25 @@ public class CarRent {
     @Column(name = "ABOLITION_FEE")
     private BigDecimal abolitionFee;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "CAR_ID")
     private Car car;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "DRIVER_ID")
     private Driver driver;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JoinColumn(name = "CAR_RELEASE_REPORT_ID")
     private CarReleaseReport carReleaseReport;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JoinColumn(name = "CAR_RETURN_REPORT_ID")
     private CarReturnReport carReturnReport;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "CLIENT_ID")
     private Client client;
 

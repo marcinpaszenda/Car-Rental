@@ -1,9 +1,11 @@
 package com.carrental.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -34,4 +36,13 @@ public class Car {
 
     @Column(name = "CAR_DAMAGE")
     private String carDamage;
+
+    @JsonIgnore
+    @OneToMany(
+            targetEntity = CarRent.class,
+            mappedBy = "car",
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+            fetch = FetchType.LAZY
+    )
+    public List<CarRent> carRentList;
 }

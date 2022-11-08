@@ -58,7 +58,7 @@ public class Client {
     @OneToMany(
             targetEntity = Driver.class,
             mappedBy = "client",
-            cascade = CascadeType.ALL,
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
     public List<Driver> drivers = new ArrayList<>();
@@ -67,7 +67,7 @@ public class Client {
     @OneToMany(
             targetEntity = CarRent.class,
             mappedBy = "client",
-            cascade = CascadeType.ALL,
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
     public List<CarRent> carRents = new ArrayList<>();

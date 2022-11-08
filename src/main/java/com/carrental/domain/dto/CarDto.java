@@ -1,9 +1,12 @@
 package com.carrental.domain.dto;
 
+import com.carrental.domain.CarRent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,4 +20,5 @@ public class CarDto {
         private Long carMileage;
         private String vinNumber;
         private String carDamage;
+        private List<CarRent> carRentList;
 }

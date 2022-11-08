@@ -1,6 +1,7 @@
 package com.carrental.service;
 
 import com.carrental.domain.Car;
+import com.carrental.domain.CarRent;
 import com.carrental.exceptions.CarNotFoundException;
 import com.carrental.repository.CarRepository;
 import org.junit.jupiter.api.Test;
@@ -28,9 +29,10 @@ public class CarServiceTest {
     @Test
     void getAllCarsTest() {
         //Given
+        List<CarRent> carRents = new ArrayList<>();
         List<Car> carList = new ArrayList<>();
-        Car car1 = new Car(1L, "Opel Mokka", "SK1120P", 25000L, "VIN549202MN1", "no damage");
-        Car car2 = new Car(2L, "Opel Corsa", "SK59482", 66000L, "VIN4939/F432/2", "scratch on door");
+        Car car1 = new Car(1L, "Opel Mokka", "SK1120P", 25000L, "VIN549202MN1", "no damage", carRents);
+        Car car2 = new Car(2L, "Opel Corsa", "SK59482", 66000L, "VIN4939/F432/2", "scratch on door", carRents);
         carList.add(car1);
         carList.add(car2);
         when(carRepository.findAll()).thenReturn(carList);
@@ -43,7 +45,8 @@ public class CarServiceTest {
     @Test
     void getCarTest() throws CarNotFoundException {
         //Given
-        Car car1 = new Car(1L, "Opel Mokka", "SK1120P", 25000L, "VIN549202MN1", "no damage");
+        List<CarRent> carRents = new ArrayList<>();
+        Car car1 = new Car(1L, "Opel Mokka", "SK1120P", 25000L, "VIN549202MN1", "no damage", carRents);
         when(carRepository.findById(1L)).thenReturn(Optional.of(car1));
         //When
         Car result = carService.findCarById(1L);
@@ -54,7 +57,8 @@ public class CarServiceTest {
     @Test
     void saveCarTest() throws CarNotFoundException {
         //Given
-        Car car1 = new Car(1L, "Opel Mokka", "SK1120P", 25000L, "VIN549202MN1", "no damage");
+        List<CarRent> carRents = new ArrayList<>();
+        Car car1 = new Car(1L, "Opel Mokka", "SK1120P", 25000L, "VIN549202MN1", "no damage", carRents);
         when(carRepository.findById(1L)).thenReturn(Optional.of(car1));
         //When
         Car updateCar = carService.findCarById(1L);

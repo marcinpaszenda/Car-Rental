@@ -4,6 +4,7 @@ import com.carrental.domain.Driver;
 import com.carrental.domain.dto.DriverDto;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,7 @@ public class DriverMapper {
                 .identityCardNumber(driverDto.getIdentityCardNumber())
                 .drivingLicenseNumber(driverDto.getDrivingLicenseNumber())
                 .phoneNumber(driverDto.getPhoneNumber())
+                .carRents(new ArrayList<>(driverDto.getCarRents()))
                 .build();
     }
 
@@ -26,7 +28,8 @@ public class DriverMapper {
                 driver.getDriverName(),
                 driver.getIdentityCardNumber(),
                 driver.getDrivingLicenseNumber(),
-                driver.getPhoneNumber()
+                driver.getPhoneNumber(),
+                new ArrayList<>(driver.getCarRents())
         );
     }
 

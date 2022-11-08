@@ -1,6 +1,7 @@
 package com.carrental.controller;
 
 import com.carrental.domain.Car;
+import com.carrental.domain.CarRent;
 import com.carrental.domain.dto.CarDto;
 import com.carrental.mapper.CarMapper;
 import com.carrental.service.CarService;
@@ -16,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -50,8 +52,9 @@ public class CarControllerTest {
     @Test
     void shouldGetAllCars() throws Exception {
         //Given
-        List<CarDto> carDtoList = List.of(new CarDto(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage"));
-        List<Car> carList = List.of(new Car(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage"));
+        List<CarRent> carRents = new ArrayList<>();
+        List<CarDto> carDtoList = List.of(new CarDto(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage", carRents));
+        List<Car> carList = List.of(new Car(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage", carRents));
 
         when(carService.getAllCars()).thenReturn(carList);
         when(carMapper.mapToCarDtoList(carList)).thenReturn(carDtoList);
@@ -70,8 +73,9 @@ public class CarControllerTest {
     @Test
     void shouldGetCar() throws Exception {
         //Given
-        Car car = new Car(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage");
-        CarDto carDto = new CarDto(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage");
+        List<CarRent> carRents = new ArrayList<>();
+        Car car = new Car(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage", carRents);
+        CarDto carDto = new CarDto(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage", carRents);
 
         when(carService.findCarById(1L)).thenReturn(car);
         when(carMapper.mapToCarDto(car)).thenReturn(carDto);
@@ -90,8 +94,9 @@ public class CarControllerTest {
     @Test
     void shouldCreateCar() throws Exception {
         //Given
-        Car car = new Car(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage");
-        CarDto carDto = new CarDto(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage");
+        List<CarRent> carRents = new ArrayList<>();
+        Car car = new Car(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage", carRents);
+        CarDto carDto = new CarDto(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage", carRents);
 
         when(carMapper.mapToCar(carDto)).thenReturn(car);
         when(carService.saveCar(car)).thenReturn(car);
@@ -112,10 +117,11 @@ public class CarControllerTest {
     @Test
     void shouldUpdateCar() throws Exception {
         //Given
-        Car car = new Car(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage");
-        CarDto carDto = new CarDto(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage");
-        Car updatedCar = new Car(2L, "Mercedes G", "SK22009", 45000L, "VIN6542234", "broken window");
-        CarDto updatedCarDto = new CarDto(2L, "Mercedes G", "SK22009", 45000L, "VIN6542234", "broken window");
+        List<CarRent> carRents = new ArrayList<>();
+        Car car = new Car(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage", carRents);
+        CarDto carDto = new CarDto(1L, "Mercedes G", "WE44433", 45000L, "VIN6542234", "no damage", carRents);
+        Car updatedCar = new Car(2L, "Mercedes G", "SK22009", 45000L, "VIN6542234", "broken window", carRents);
+        CarDto updatedCarDto = new CarDto(2L, "Mercedes G", "SK22009", 45000L, "VIN6542234", "broken window", carRents);
 
         when(carMapper.mapToCar(carDto)).thenReturn(car);
         when(carService.saveCar(car)).thenReturn(updatedCar);

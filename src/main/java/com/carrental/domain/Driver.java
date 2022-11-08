@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -34,7 +36,16 @@ public class Driver {
     private Long phoneNumber;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "CLIENT_ID")
     private Client client;
+
+    @JsonIgnore
+    @OneToMany(
+            targetEntity = CarRent.class,
+            mappedBy = "client",
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+            fetch = FetchType.LAZY
+    )
+    public List<CarRent> carRents = new ArrayList<>();
 }

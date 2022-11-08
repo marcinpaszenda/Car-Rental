@@ -1,5 +1,6 @@
 package com.carrental.mapper;
 
+import com.carrental.domain.CarRent;
 import com.carrental.domain.Driver;
 import com.carrental.domain.dto.DriverDto;
 import org.junit.jupiter.api.Test;
@@ -15,8 +16,9 @@ public class DriverMapperTestSuite {
     @Test
     void mapToDriverTest() {
         //Given
+        List<CarRent> carRents = new ArrayList<>();
         DriverMapper driverMapper = new DriverMapper();
-        DriverDto driverDto = new DriverDto(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L);
+        DriverDto driverDto = new DriverDto(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L, carRents);
         //When
         Driver driver = driverMapper.mapToDriver(driverDto);
         //Then
@@ -27,8 +29,9 @@ public class DriverMapperTestSuite {
     @Test
     void mapToDriverDtoTest() {
         //Given
+        List<CarRent> carRents = new ArrayList<>();
         DriverMapper driverMapper = new DriverMapper();
-        Driver driver = new Driver(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L, null);
+        Driver driver = new Driver(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L, null, carRents);
         //When
         DriverDto driverDto = driverMapper.mapToDriverDto(driver);
         //Then
@@ -40,9 +43,10 @@ public class DriverMapperTestSuite {
     void mapToDriverDtoListTest() {
         //Given
         DriverMapper driverMapper = new DriverMapper();
+        List<CarRent> carRents = new ArrayList<>();
         List<Driver> driverList = new ArrayList<>();
-        Driver driver1 = new Driver(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L, null);
-        Driver driver2 = new Driver(6L, "Arthur Bart", "4MN/09876/P", "2094/FE4/231", 789232000L, null);
+        Driver driver1 = new Driver(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L, null, carRents);
+        Driver driver2 = new Driver(6L, "Arthur Bart", "4MN/09876/P", "2094/FE4/231", 789232000L, null, carRents);
         driverList.add(driver1);
         driverList.add(driver2);
         //When
