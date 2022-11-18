@@ -1,7 +1,7 @@
 package com.carrental.repository;
 
 import com.carrental.domain.CarRent;
-import com.carrental.domain.Currency;
+import com.carrental.domain.enums.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +35,10 @@ public class CarRentRepositoryTestSuite {
                 .additionalCosts(BigDecimal.ZERO)
                 .deposit(BigDecimal.valueOf(1000))
                 .totalCost(BigDecimal.valueOf(1000))
-                .dailyMileageLimit(false)
-                .travelAbroad(false)
-                .registrationCertificate(false)
-                .abolitionDeductibleInDamage(false)
+                .dailyMileageLimit(DailyMileageLimit.NIE)
+                .travelAbroad(TravelAbroad.NIE)
+                .registrationCertificate(RegistrationCertificate.NIE)
+                .abolitionDeductibleInDamage(AbolitionDeductibleInDamage.NIE)
                 .abolitionFee(BigDecimal.ZERO)
                 .build();
     }

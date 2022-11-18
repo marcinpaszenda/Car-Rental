@@ -1,5 +1,6 @@
 package com.carrental.domain;
 
+import com.carrental.domain.enums.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -55,16 +56,16 @@ public class CarRent {
     private BigDecimal totalCost;
 
     @Column(name = "DAILY_MILEAGE_LIMIT")
-    private boolean dailyMileageLimit;
+    private DailyMileageLimit dailyMileageLimit;
 
     @Column(name = "TRAVEL_ABROAD")
-    private boolean travelAbroad;
+    private TravelAbroad travelAbroad;
 
     @Column(name = "REGISTRATION_CERTIFICATE")
-    private boolean registrationCertificate;
+    private RegistrationCertificate registrationCertificate;
 
     @Column(name = "ABOLITION_DEDUCTIBLE_IN_DAMAGE")
-    private boolean abolitionDeductibleInDamage;
+    private AbolitionDeductibleInDamage abolitionDeductibleInDamage;
 
     @Column(name = "ABOLITION_FEE")
     private BigDecimal abolitionFee;

@@ -10,8 +10,8 @@ public class CarReturnReportMapper {
     public CarReturnReport mapToCarReturnReport(CarReturnReportDto carReturnReportDto) {
         return new CarReturnReport(
                 carReturnReportDto.getCarReturnReportId(),
-                carReturnReportDto.isCleanCarBody(),
-                carReturnReportDto.isCleanCarInterior(),
+                carReturnReportDto.getCleanCarBody(),
+                carReturnReportDto.getCleanCarInterior(),
                 carReturnReportDto.getAmountOfFuel(),
                 carReturnReportDto.getCarMileage(),
                 carReturnReportDto.getNewCarDamage(),
@@ -23,8 +23,8 @@ public class CarReturnReportMapper {
     public CarReturnReportDto mapToCarReturnReportDto(CarReturnReport carReturnReport) {
         return new CarReturnReportDto(
                 carReturnReport.getCarReturnReportId(),
-                carReturnReport.isCleanCarBody(),
-                carReturnReport.isCleanCarInterior(),
+                carReturnReport.getCleanCarBody(),
+                carReturnReport.getCleanCarInterior(),
                 carReturnReport.getAmountOfFuel(),
                 carReturnReport.getCarMileage(),
                 carReturnReport.getNewCarDamage(),

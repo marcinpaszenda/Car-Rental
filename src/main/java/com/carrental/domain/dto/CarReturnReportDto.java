@@ -1,5 +1,7 @@
 package com.carrental.domain.dto;
 
+import com.carrental.domain.enums.CleanCarBody;
+import com.carrental.domain.enums.CleanCarInterior;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,8 +16,8 @@ import java.math.BigDecimal;
 public class CarReturnReportDto {
 
     private Long carReturnReportId;
-    private boolean cleanCarBody;
-    private boolean cleanCarInterior;
+    private CleanCarBody cleanCarBody;
+    private CleanCarInterior cleanCarInterior;
     private int amountOfFuel;
     private Long carMileage;
     private String newCarDamage;

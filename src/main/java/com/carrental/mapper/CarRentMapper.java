@@ -25,10 +25,10 @@ public class CarRentMapper {
                 .additionalCosts(carRentDto.getAdditionalCosts())
                 .deposit(carRentDto.getDeposit())
                 .totalCost(carRentDto.getTotalCost())
-                .dailyMileageLimit(carRentDto.isDailyMileageLimit())
-                .travelAbroad(carRentDto.isTravelAbroad())
-                .registrationCertificate(carRentDto.isRegistrationCertificate())
-                .abolitionDeductibleInDamage(carRentDto.isAbolitionDeductibleInDamage())
+                .dailyMileageLimit(carRentDto.getDailyMileageLimit())
+                .travelAbroad(carRentDto.getTravelAbroad())
+                .registrationCertificate(carRentDto.getRegistrationCertificate())
+                .abolitionDeductibleInDamage(carRentDto.getAbolitionDeductibleInDamage())
                 .abolitionFee(carRentDto.getAbolitionFee())
                 .car(carRentDto.getCar())
                 .driver(carRentDto.getDriver())
@@ -51,10 +51,10 @@ public class CarRentMapper {
         carRent.getAdditionalCosts(),
         carRent.getDeposit(),
         carRent.getTotalCost(),
-        carRent.isDailyMileageLimit(),
-        carRent.isTravelAbroad(),
-        carRent.isRegistrationCertificate(),
-        carRent.isAbolitionDeductibleInDamage(),
+        carRent.getDailyMileageLimit(),
+        carRent.getTravelAbroad(),
+        carRent.getRegistrationCertificate(),
+        carRent.getAbolitionDeductibleInDamage(),
         carRent.getAbolitionFee(),
         carRent.getCar(),
         carRent.getDriver(),

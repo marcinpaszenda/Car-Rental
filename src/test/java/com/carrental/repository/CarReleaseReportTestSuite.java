@@ -1,6 +1,8 @@
 package com.carrental.repository;
 
 import com.carrental.domain.CarReleaseReport;
+import com.carrental.domain.enums.CleanCarBody;
+import com.carrental.domain.enums.CleanCarInterior;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,8 @@ public class CarReleaseReportTestSuite {
     @BeforeEach
     public void beforeTests() {
         carReleaseReport = CarReleaseReport.builder()
-                .cleanCarBody(true)
-                .cleanCarInterior(true)
+                .cleanCarBody(CleanCarBody.TAK)
+                .cleanCarInterior(CleanCarInterior.TAK)
                 .amountOfFuel(100)
                 .carMileage(33300L)
                 .remarks("ok")

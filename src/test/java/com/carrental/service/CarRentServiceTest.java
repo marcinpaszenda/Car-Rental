@@ -1,7 +1,7 @@
 package com.carrental.service;
 
 import com.carrental.domain.CarRent;
-import com.carrental.domain.Currency;
+import com.carrental.domain.enums.*;
 import com.carrental.exceptions.CarRentNotFoundException;
 import com.carrental.repository.CarRentRepository;
 import org.junit.jupiter.api.Test;
@@ -37,14 +37,14 @@ public class CarRentServiceTest {
                 LocalTime.of(10, 10), LocalDate.of(2022, 3, 12),
                 LocalTime.of(20, 20), 10L,
                 Currency.PLN, BigDecimal.valueOf(100), null, null,
-                null, true, false, false,
-                false, null, null, null,
+                null, DailyMileageLimit.TAK, TravelAbroad.NIE, RegistrationCertificate.NIE,
+                AbolitionDeductibleInDamage.NIE, null, null, null,
                 null, null, null);
         CarRent carRent2 = new CarRent(2L, LocalDate.of(2022, 6, 6),
                 LocalTime.of(12, 12), LocalDate.of(2022, 6, 12),
                 LocalTime.of(10, 2), 6L, Currency.PLN, BigDecimal.valueOf(150),
-                null, null, null, true, false,
-                false, false, null, null, null,
+                null, null, null, DailyMileageLimit.TAK, TravelAbroad.NIE,
+                RegistrationCertificate.NIE, AbolitionDeductibleInDamage.NIE, null, null, null,
                 null, null, null);
         carRentList.add(carRent1);
         carRentList.add(carRent2);
@@ -62,8 +62,8 @@ public class CarRentServiceTest {
                 LocalTime.of(10, 10), LocalDate.of(2022, 3, 12),
                 LocalTime.of(20, 20), 10L,
                 Currency.PLN, BigDecimal.valueOf(100), null, null,
-                null, true, false, false,
-                false, null, null, null,
+                null, DailyMileageLimit.TAK, TravelAbroad.NIE, RegistrationCertificate.NIE,
+                AbolitionDeductibleInDamage.NIE, null, null, null,
                 null, null, null);
         when(carRentRepository.findById(1L)).thenReturn(Optional.of(carRent1));
         //When
@@ -79,8 +79,8 @@ public class CarRentServiceTest {
                 LocalTime.of(10, 10), LocalDate.of(2022, 3, 12),
                 LocalTime.of(20, 20), 10L,
                 Currency.PLN, BigDecimal.valueOf(100), null, null,
-                null, true, false, false,
-                false, null, null, null,
+                null, DailyMileageLimit.TAK, TravelAbroad.NIE, RegistrationCertificate.NIE,
+                AbolitionDeductibleInDamage.NIE, null, null, null,
                 null, null, null);
         when(carRentRepository.findById(1L)).thenReturn(Optional.of(carRent1));
         //When

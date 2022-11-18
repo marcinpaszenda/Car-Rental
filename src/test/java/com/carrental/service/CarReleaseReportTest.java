@@ -1,6 +1,8 @@
 package com.carrental.service;
 
 import com.carrental.domain.CarReleaseReport;
+import com.carrental.domain.enums.CleanCarBody;
+import com.carrental.domain.enums.CleanCarInterior;
 import com.carrental.exceptions.CarReleaseReportNotFoundException;
 import com.carrental.repository.CarReleaseReportRepository;
 import org.junit.jupiter.api.Test;
@@ -27,7 +29,7 @@ public class CarReleaseReportTest {
     @Test
     void getCarReleaseReportTest() throws CarReleaseReportNotFoundException {
         //Given
-        CarReleaseReport carReleaseReport1 = new CarReleaseReport(1L, true, true, 100, 22000L, "no remarks");
+        CarReleaseReport carReleaseReport1 = new CarReleaseReport(1L, CleanCarBody.TAK, CleanCarInterior.TAK, 100, 22000L, "no remarks");
         when(carReleaseReportRepository.findById(1L)).thenReturn(Optional.of(carReleaseReport1));
         //When
         CarReleaseReport result = carReleaseReportService.findCarReleaseReportById(1L);
@@ -38,13 +40,13 @@ public class CarReleaseReportTest {
     @Test
     void saveCarReleaseReportTest() throws CarReleaseReportNotFoundException {
         //Given
-        CarReleaseReport carReleaseReport1 = new CarReleaseReport(1L, true, true, 100, 22000L, "no remarks");
+        CarReleaseReport carReleaseReport1 = new CarReleaseReport(1L, CleanCarBody.TAK, CleanCarInterior.TAK, 100, 22000L, "no remarks");
         when(carReleaseReportRepository.findById(1L)).thenReturn(Optional.of(carReleaseReport1));
         //When
         CarReleaseReport updateCarReleaseReport = carReleaseReportService.findCarReleaseReportById(1L);
-        updateCarReleaseReport.setCleanCarBody(false);
+        updateCarReleaseReport.setCleanCarBody(CleanCarBody.NIE);
         carReleaseReportService.saveCarReleaseReport(updateCarReleaseReport);
         //Then
-        assertFalse(updateCarReleaseReport.isCleanCarBody());
+        assertEquals(CleanCarBody.NIE, updateCarReleaseReport.getCleanCarBody());
     }
 }

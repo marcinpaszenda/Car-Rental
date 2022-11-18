@@ -1,6 +1,8 @@
 package com.carrental.service;
 
 import com.carrental.domain.CarReturnReport;
+import com.carrental.domain.enums.CleanCarBody;
+import com.carrental.domain.enums.CleanCarInterior;
 import com.carrental.exceptions.CarReturnReportNotFoundException;
 import com.carrental.repository.CarReturnReportRepository;
 import org.junit.jupiter.api.Test;
@@ -26,7 +28,7 @@ public class CarReturnReportTest {
     @Test
     void getCarReturnReportTest() throws CarReturnReportNotFoundException {
         //Given
-        CarReturnReport carReturnReport = new CarReturnReport(1L, true, true, 90, 12000L, "no damage", "no remarks", null);
+        CarReturnReport carReturnReport = new CarReturnReport(1L, CleanCarBody.TAK, CleanCarInterior.TAK, 90, 12000L, "no damage", "no remarks", null);
         when(carReturnReportRepository.findById(1L)).thenReturn(Optional.of(carReturnReport));
         //When
         CarReturnReport result = carReturnReportService.findCarReturnReportById(1L);
@@ -37,7 +39,7 @@ public class CarReturnReportTest {
     @Test
     void saveCarReturnReportTest() throws CarReturnReportNotFoundException {
         //Given
-        CarReturnReport carReturnReport = new CarReturnReport(1L, true, true, 90, 12000L, "no damage", "no remarks", null);
+        CarReturnReport carReturnReport = new CarReturnReport(1L, CleanCarBody.TAK, CleanCarInterior.TAK, 90, 12000L, "no damage", "no remarks", null);
         when(carReturnReportRepository.findById(1L)).thenReturn(Optional.of(carReturnReport));
         //When
         CarReturnReport updateCarReturnReport = carReturnReportService.findCarReturnReportById(1L);

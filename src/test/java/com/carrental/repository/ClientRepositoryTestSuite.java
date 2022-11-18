@@ -1,7 +1,7 @@
 package com.carrental.repository;
 
 import com.carrental.domain.Client;
-import com.carrental.domain.TypeOfIdentificationNumber;
+import com.carrental.domain.enums.TypeOfIdentificationNumber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

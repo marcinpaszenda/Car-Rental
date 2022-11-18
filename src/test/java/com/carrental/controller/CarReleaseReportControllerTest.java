@@ -2,6 +2,8 @@ package com.carrental.controller;
 
 import com.carrental.domain.CarReleaseReport;
 import com.carrental.domain.dto.CarReleaseReportDto;
+import com.carrental.domain.enums.CleanCarBody;
+import com.carrental.domain.enums.CleanCarInterior;
 import com.carrental.mapper.CarReleaseReportMapper;
 import com.carrental.service.CarReleaseReportService;
 import com.google.gson.Gson;
@@ -35,8 +37,8 @@ public class CarReleaseReportControllerTest {
     @Test
     void shouldGetCarReleaseReport() throws Exception {
         //Given
-        CarReleaseReport carReleaseReport = new CarReleaseReport(1L, true, true, 100, 34500L, null);
-        CarReleaseReportDto carReleaseReportDto = new CarReleaseReportDto(1L, true, true, 100, 34500L, null);
+        CarReleaseReport carReleaseReport = new CarReleaseReport(1L, CleanCarBody.TAK, CleanCarInterior.TAK, 100, 34500L, null);
+        CarReleaseReportDto carReleaseReportDto = new CarReleaseReportDto(1L, CleanCarBody.TAK, CleanCarInterior.TAK, 100, 34500L, null);
 
         when(service.findCarReleaseReportById(1L)).thenReturn(carReleaseReport);
         when(mapper.mapToCarReleaseReportDto(carReleaseReport)).thenReturn(carReleaseReportDto);
@@ -54,8 +56,8 @@ public class CarReleaseReportControllerTest {
     @Test
     void shouldCreateCarReleaseReport() throws Exception {
         //Given
-        CarReleaseReport carReleaseReport = new CarReleaseReport(1L, true, true, 100, 34500L, null);
-        CarReleaseReportDto carReleaseReportDto = new CarReleaseReportDto(1L, true, true, 100, 34500L, null);
+        CarReleaseReport carReleaseReport = new CarReleaseReport(1L, CleanCarBody.TAK, CleanCarInterior.TAK, 100, 34500L, null);
+        CarReleaseReportDto carReleaseReportDto = new CarReleaseReportDto(1L, CleanCarBody.TAK, CleanCarInterior.TAK, 100, 34500L, null);
 
         when(mapper.mapToCarReleaseReport(carReleaseReportDto)).thenReturn(carReleaseReport);
         when(service.saveCarReleaseReport(carReleaseReport)).thenReturn(carReleaseReport);
@@ -76,10 +78,10 @@ public class CarReleaseReportControllerTest {
     @Test
     void shouldUpdateCarReleaseReport() throws Exception {
         //Given
-        CarReleaseReport carReleaseReport = new CarReleaseReport(1L, true, true, 100, 34500L, "ok");
-        CarReleaseReportDto carReleaseReportDto = new CarReleaseReportDto(1L, true, true, 100, 34500L, "ok");
-        CarReleaseReport updateCarReleaseReport = new CarReleaseReport(2L, false, true, 100, 40000L, "ok");
-        CarReleaseReportDto updateCarReleaseReportDto = new CarReleaseReportDto(2L, false, true, 100, 40000L, "ok");
+        CarReleaseReport carReleaseReport = new CarReleaseReport(1L, CleanCarBody.TAK, CleanCarInterior.TAK, 100, 34500L, "ok");
+        CarReleaseReportDto carReleaseReportDto = new CarReleaseReportDto(1L, CleanCarBody.TAK, CleanCarInterior.TAK, 100, 34500L, "ok");
+        CarReleaseReport updateCarReleaseReport = new CarReleaseReport(2L, CleanCarBody.NIE, CleanCarInterior.TAK, 100, 40000L, "ok");
+        CarReleaseReportDto updateCarReleaseReportDto = new CarReleaseReportDto(2L, CleanCarBody.NIE, CleanCarInterior.TAK, 100, 40000L, "ok");
 
         when(mapper.mapToCarReleaseReport(carReleaseReportDto)).thenReturn(carReleaseReport);
         when(service.updateCarReleaseReport(carReleaseReport)).thenReturn(updateCarReleaseReport);

@@ -2,6 +2,8 @@ package com.carrental.mapper;
 
 import com.carrental.domain.CarReturnReport;
 import com.carrental.domain.dto.CarReturnReportDto;
+import com.carrental.domain.enums.CleanCarBody;
+import com.carrental.domain.enums.CleanCarInterior;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -15,7 +17,8 @@ public class CarReturnReportMapperTestSuite {
     void mapToCarReturnReportTest() {
         //Given
         CarReturnReportMapper carReturnReportMapper = new CarReturnReportMapper();
-        CarReturnReportDto carReturnReportDto = new CarReturnReportDto(1L, true, false, 10, 22331L, "no damage", null, BigDecimal.valueOf(500));
+        CarReturnReportDto carReturnReportDto = new CarReturnReportDto(1L, CleanCarBody.TAK,
+                CleanCarInterior.NIE, 10, 22331L, "no damage", null, BigDecimal.valueOf(500));
         //When
         CarReturnReport carReturnReport = carReturnReportMapper.mapToCarReturnReport(carReturnReportDto);
         //Then
@@ -27,7 +30,8 @@ public class CarReturnReportMapperTestSuite {
     void mapToCarReturnReportDtoTest() {
         //Given
         CarReturnReportMapper carReturnReportMapper = new CarReturnReportMapper();
-        CarReturnReport carReturnReport = new CarReturnReport(2L, false, false, 100, 44444L, null, null, BigDecimal.valueOf(1000));
+        CarReturnReport carReturnReport = new CarReturnReport(2L, CleanCarBody.NIE,
+                CleanCarInterior.NIE, 100, 44444L, null, null, BigDecimal.valueOf(1000));
         //When
         CarReturnReportDto carReturnReportDto = carReturnReportMapper.mapToCarReturnReportDto(carReturnReport);
         //Then

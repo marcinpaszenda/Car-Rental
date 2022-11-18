@@ -2,7 +2,7 @@ package com.carrental.domain.dto;
 
 import com.carrental.domain.CarRent;
 import com.carrental.domain.Driver;
-import com.carrental.domain.TypeOfIdentificationNumber;
+import com.carrental.domain.enums.TypeOfIdentificationNumber;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

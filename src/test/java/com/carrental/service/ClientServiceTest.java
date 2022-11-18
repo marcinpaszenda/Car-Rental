@@ -1,7 +1,7 @@
 package com.carrental.service;
 
 import com.carrental.domain.Client;
-import com.carrental.domain.TypeOfIdentificationNumber;
+import com.carrental.domain.enums.TypeOfIdentificationNumber;
 import com.carrental.exceptions.ClientNotFoundException;
 import com.carrental.repository.ClientRepository;
 import org.junit.jupiter.api.Test;

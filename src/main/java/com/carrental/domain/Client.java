@@ -1,5 +1,6 @@
 package com.carrental.domain;
 
+import com.carrental.domain.enums.TypeOfIdentificationNumber;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 

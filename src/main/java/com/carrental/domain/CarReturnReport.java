@@ -1,5 +1,7 @@
 package com.carrental.domain;
 
+import com.carrental.domain.enums.CleanCarBody;
+import com.carrental.domain.enums.CleanCarInterior;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,10 +24,10 @@ public class CarReturnReport {
     private Long carReturnReportId;
 
     @Column(name = "CLEAN_CAR_BODY")
-    private boolean cleanCarBody;
+    private CleanCarBody cleanCarBody;
 
     @Column(name = "CLEAN_CAR_INTERIOR")
-    private boolean cleanCarInterior;
+    private CleanCarInterior cleanCarInterior;
 
     @Column(name = "AMOUNT_OF_FUEL_PER_CENT")
     private int amountOfFuel;

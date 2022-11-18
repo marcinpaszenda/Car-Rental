@@ -1,7 +1,7 @@
 package com.carrental.mapper;
 
 import com.carrental.domain.Client;
-import com.carrental.domain.TypeOfIdentificationNumber;
+import com.carrental.domain.enums.TypeOfIdentificationNumber;
 import com.carrental.domain.dto.ClientDto;
 import org.junit.jupiter.api.Test;
 
