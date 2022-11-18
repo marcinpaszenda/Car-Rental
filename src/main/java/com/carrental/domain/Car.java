@@ -44,5 +44,5 @@ public class Car {
             cascade = {CascadeType.MERGE, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
-    public List<CarRent> carRentList;
+    private List<CarRent> carRentList;
 }

@@ -1,5 +1,6 @@
 package com.carrental.service;
 
+import com.carrental.domain.Car;
 import com.carrental.domain.CarRent;
 import com.carrental.exceptions.CarRentNotFoundException;
 import com.carrental.repository.CarRentRepository;
@@ -40,6 +41,30 @@ public class CarRentService {
             carRentRepository.deleteById(carRentId);
         } else {
             throw new CarRentNotFoundException();
+        }
+    }
+
+    // metoda dodająca nowe uszkodzenia do pojazdu
+    public void addNewDamageToCar(Long carRentId, String newDamage) {
+        if (newDamage == null) {
+            return;
+        } else {
+            CarRent carRent = carRentRepository.findById(carRentId).get();
+            Car car = carRent.getCar();
+            String oldDamage = carRent.getCar().getCarDamage();
+            String newStatusDamage = oldDamage + ", " + newDamage;
+            car.setCarDamage(newStatusDamage);
+        }
+    }
+
+    // metoda aktualizująca przebieg pojazdu
+    public void updateCarMileage(Long carRentId, Long newCarMileage) {
+        if (newCarMileage == null) {
+            return;
+        } else {
+            CarRent carRent = carRentRepository.findById(carRentId).get();
+            Car car = carRent.getCar();
+            car.setCarMileage(newCarMileage);
         }
     }
 }

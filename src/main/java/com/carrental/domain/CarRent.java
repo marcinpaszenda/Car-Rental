@@ -78,11 +78,11 @@ public class CarRent {
     @JoinColumn(name = "DRIVER_ID")
     private Driver driver;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
     @JoinColumn(name = "CAR_RELEASE_REPORT_ID")
     private CarReleaseReport carReleaseReport;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
     @JoinColumn(name = "CAR_RETURN_REPORT_ID")
     private CarReturnReport carReturnReport;
 

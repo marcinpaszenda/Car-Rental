@@ -6,6 +6,7 @@ import com.carrental.exceptions.*;
 import com.carrental.mapper.CarRentMapper;
 import com.carrental.repository.*;
 import com.carrental.service.CarRentService;
+import com.carrental.service.CarReturnReportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,6 +28,9 @@ public class CarRentController {
     private final ClientRepository clientRepository;
     private final CarReleaseReportRepository carReleaseReportRepository;
     private final CarReturnReportRepository carReturnReportRepository;
+
+    //dodaje pole
+    private final CarReturnReportService carReturnReportService;
 
 
 
@@ -91,6 +95,10 @@ public class CarRentController {
         CarRent carRent = carRentRepository.findById(carRentId).get();
         CarReleaseReport carReleaseReport = carReleaseReportRepository.findById(carReleaseReportId).get();
         carRent.setCarReleaseReport(carReleaseReport);
+        //dodajemy aktualny przebieg pojazdu przed wydaniem
+        Long newCarMileage = carReleaseReport.getCarMileage();
+        carRentService.updateCarMileage(carRentId, newCarMileage);
+
         return carRentRepository.save(carRent).getCarReleaseReport();
     }
 
@@ -99,6 +107,13 @@ public class CarRentController {
         CarRent carRent = carRentRepository.findById(carRentId).get();
         CarReturnReport carReturnReport = carReturnReportRepository.findById(carReturnReportId).get();
         carRent.setCarReturnReport(carReturnReport);
+        // dodajemy ewentualne nowe uszkodzenia do car
+        String newDamage = carReturnReport.getNewCarDamage();
+        carRentService.addNewDamageToCar(carRentId, newDamage);
+        //dodajemy aktualny przebieg pojazdu po zwrocie
+        Long newCarMileage = carReturnReport.getCarMileage();
+        carRentService.updateCarMileage(carRentId, newCarMileage);
+
         return carRentRepository.save(carRent).getCarReturnReport();
     }
 }
