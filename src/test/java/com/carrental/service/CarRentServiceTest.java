@@ -38,14 +38,14 @@ public class CarRentServiceTest {
                 LocalTime.of(20, 20), 10L,
                 Currency.PLN, BigDecimal.valueOf(100), null, null,
                 null, DailyMileageLimit.TAK, TravelAbroad.NIE, RegistrationCertificate.NIE,
-                AbolitionDeductibleInDamage.NIE, null, null, null,
-                null, null, null);
+                AbolitionDeductibleInDamage.NIE, null, false, null,
+                null, null, null, null);
         CarRent carRent2 = new CarRent(2L, LocalDate.of(2022, 6, 6),
                 LocalTime.of(12, 12), LocalDate.of(2022, 6, 12),
                 LocalTime.of(10, 2), 6L, Currency.PLN, BigDecimal.valueOf(150),
                 null, null, null, DailyMileageLimit.TAK, TravelAbroad.NIE,
-                RegistrationCertificate.NIE, AbolitionDeductibleInDamage.NIE, null, null, null,
-                null, null, null);
+                RegistrationCertificate.NIE, AbolitionDeductibleInDamage.NIE, null, false, null,
+                null, null, null, null);
         carRentList.add(carRent1);
         carRentList.add(carRent2);
         when(carRentRepository.findAll()).thenReturn(carRentList);
@@ -63,8 +63,8 @@ public class CarRentServiceTest {
                 LocalTime.of(20, 20), 10L,
                 Currency.PLN, BigDecimal.valueOf(100), null, null,
                 null, DailyMileageLimit.TAK, TravelAbroad.NIE, RegistrationCertificate.NIE,
-                AbolitionDeductibleInDamage.NIE, null, null, null,
-                null, null, null);
+                AbolitionDeductibleInDamage.NIE, null, false, null,
+                null, null, null, null);
         when(carRentRepository.findById(1L)).thenReturn(Optional.of(carRent1));
         //When
         CarRent result = carRentService.findCarRentById(1L);
@@ -80,8 +80,8 @@ public class CarRentServiceTest {
                 LocalTime.of(20, 20), 10L,
                 Currency.PLN, BigDecimal.valueOf(100), null, null,
                 null, DailyMileageLimit.TAK, TravelAbroad.NIE, RegistrationCertificate.NIE,
-                AbolitionDeductibleInDamage.NIE, null, null, null,
-                null, null, null);
+                AbolitionDeductibleInDamage.NIE, null, false, null,
+                null, null, null, null);
         when(carRentRepository.findById(1L)).thenReturn(Optional.of(carRent1));
         //When
         CarRent updateCarRent = carRentService.findCarRentById(1L);

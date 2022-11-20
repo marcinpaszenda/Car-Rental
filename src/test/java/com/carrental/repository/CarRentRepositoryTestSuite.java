@@ -2,6 +2,7 @@ package com.carrental.repository;
 
 import com.carrental.domain.CarRent;
 import com.carrental.domain.enums.*;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -40,6 +42,7 @@ public class CarRentRepositoryTestSuite {
                 .registrationCertificate(RegistrationCertificate.NIE)
                 .abolitionDeductibleInDamage(AbolitionDeductibleInDamage.NIE)
                 .abolitionFee(BigDecimal.ZERO)
+                .isActive(false)
                 .build();
     }
 
@@ -63,8 +66,8 @@ public class CarRentRepositoryTestSuite {
         //When
         CarRent result = carRentRepository.findById(carRent.getCarRentId()).get();
         //Then
-        assertEquals(BigDecimal.ZERO, result.getAbolitionFee());
-        assertEquals(dailyRate, result.getDailyRate());
+        assertThat(BigDecimal.ZERO.compareTo(result.getAbolitionFee()));
+        assertThat(dailyRate.compareTo(result.getDailyRate()));
         //CleanUp
         carRentRepository.deleteById(carRent.getCarRentId());
     }

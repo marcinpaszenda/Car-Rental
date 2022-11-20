@@ -29,11 +29,6 @@ public class CarRentController {
     private final CarReleaseReportRepository carReleaseReportRepository;
     private final CarReturnReportRepository carReturnReportRepository;
 
-    //dodaje pole
-    private final CarReturnReportService carReturnReportService;
-
-
-
     @GetMapping
     public ResponseEntity<List<CarRentDto>> getCarRents() {
         List<CarRent> carRents = carRentService.getAllCarRents();
@@ -49,6 +44,7 @@ public class CarRentController {
     public ResponseEntity<CarRent> addCarRent(@RequestBody CarRentDto carRentDto) {
         CarRent carRent = carRentMapper.mapToCarRent(carRentDto);
         carRentService.saveCarRent(carRent);
+
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(carRent);
     }
@@ -98,6 +94,8 @@ public class CarRentController {
         //dodajemy aktualny przebieg pojazdu przed wydaniem
         Long newCarMileage = carReleaseReport.getCarMileage();
         carRentService.updateCarMileage(carRentId, newCarMileage);
+        //ustawiamy status wypożyczenia na aktywny
+        carRent.setActive(true);
 
         return carRentRepository.save(carRent).getCarReleaseReport();
     }
@@ -113,6 +111,8 @@ public class CarRentController {
         //dodajemy aktualny przebieg pojazdu po zwrocie
         Long newCarMileage = carReturnReport.getCarMileage();
         carRentService.updateCarMileage(carRentId, newCarMileage);
+        //ustawiamy status wypożyczenia na zakończone
+        carRent.setActive(false);
 
         return carRentRepository.save(carRent).getCarReturnReport();
     }

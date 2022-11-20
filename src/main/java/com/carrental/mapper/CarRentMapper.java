@@ -30,6 +30,7 @@ public class CarRentMapper {
                 .registrationCertificate(carRentDto.getRegistrationCertificate())
                 .abolitionDeductibleInDamage(carRentDto.getAbolitionDeductibleInDamage())
                 .abolitionFee(carRentDto.getAbolitionFee())
+                .isActive(carRentDto.isActive())
                 .car(carRentDto.getCar())
                 .driver(carRentDto.getDriver())
                 .client(carRentDto.getClient())
@@ -56,6 +57,7 @@ public class CarRentMapper {
         carRent.getRegistrationCertificate(),
         carRent.getAbolitionDeductibleInDamage(),
         carRent.getAbolitionFee(),
+                carRent.isActive(),
         carRent.getCar(),
         carRent.getDriver(),
         carRent.getClient(),
