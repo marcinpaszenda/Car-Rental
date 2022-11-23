@@ -51,7 +51,7 @@ public class CarRentService {
 
     // metoda dodająca nowe uszkodzenia do pojazdu
     public void addNewDamageToCar(Long carRentId, String newDamage) throws CarNotFoundException {
-        if (newDamage == "") {
+        if (newDamage == null) {
             return;
         } else {
             CarRent carRent = carRentRepository.findById(carRentId).get();
