@@ -38,9 +38,21 @@ public class CarRentController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CarRent> addCarRent(@RequestBody CarRentDto carRentDto) {
+    public ResponseEntity<CarRent> addCarRent(@RequestBody CarRentDto carRentDto) throws CarNotFoundException {
         CarRent carRent = carRentMapper.mapToCarRent(carRentDto);
         carRentService.saveCarRent(carRent);
+
+        //dodajemy aktualny przebieg pojazdu przed wydaniem
+        Long carRentId = carRent.getCarRentId();
+        Long newCarMileageRelase = carRent.getCarMileageRelease();
+        carRentService.updateCarMileage(carRentId, newCarMileageRelase);
+        //dodajemy aktualny przebieg pojazdu po zwrocie
+        Long newCarMileageReturn = carRent.getCarMileageReturn();
+        carRentService.updateCarMileage(carRentId, newCarMileageReturn);
+        // dodajemy ewentualne nowe uszkodzenia do car
+        String newDamage = carRent.getNewCarDamage();
+        carRentService.addNewDamageToCar(carRentId, newDamage);
+
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(carRent);
     }
