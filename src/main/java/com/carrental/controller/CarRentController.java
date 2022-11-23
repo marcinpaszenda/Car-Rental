@@ -29,6 +29,7 @@ public class CarRentController {
     @GetMapping
     public ResponseEntity<List<CarRentDto>> getCarRents() {
         List<CarRent> carRents = carRentService.getAllCarRents();
+        carRentService.carRentActiveStatus(carRents);
         return ResponseEntity.ok(carRentMapper.mapToCarRentDtoList(carRents));
     }
 
