@@ -38,7 +38,7 @@ public class CarRent {
     private LocalTime returnHour;
 
     @Column(name = "RENTAL_DAY_LENGTH")
-    private Long rentalDayLength;
+    private int rentalDayLength;
 
     @Column(name = "CURRENCY")
     private Currency currency;
@@ -73,6 +73,45 @@ public class CarRent {
     @Column(name = "IS_ACTIVE_CAR_RENT")
     private boolean isActive;
 
+
+    @Column(name = "CLEAN_CAR_BODY_RELEASE")
+    private CleanCarBody cleanCarBodyRelease;
+
+    @Column(name = "CLEAN_CAR_INTERIOR_RELEASE")
+    private CleanCarInterior cleanCarInteriorRelease;
+
+    @Column(name = "AMOUNT_OF_FUEL_RELEASE")
+    private String amountOfFuelRelease;
+
+    @Column(name = "CAR_MILEAGE_RELEASE")
+    private Long carMileageRelease;
+
+    @Column(name = "REMARKS_RELEASE")
+    private String remarksRelease;
+
+
+    @Column(name = "CLEAN_CAR_BODY_RETURN")
+    private CleanCarBody cleanCarBodyReturn;
+
+    @Column(name = "CLEAN_CAR_INTERIOR_RETURN")
+    private CleanCarInterior cleanCarInteriorReturn;
+
+    @Column(name = "AMOUNT_OF_FUEL_RETURN")
+    private String amountOfFuelReturn;
+
+    @Column(name = "CAR_MILEAGE_RETURN")
+    private Long carMileageReturn;
+
+    @Column(name = "NEW_CAR_DAMAGE")
+    private String newCarDamage;
+
+    @Column(name = "REMARKS_RETURN")
+    private String remarksReturn;
+
+    @Column(name = "DEPOSIT_REFUND")
+    private BigDecimal depositRefund;
+
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "CAR_ID")
@@ -81,14 +120,6 @@ public class CarRent {
     @ManyToOne
     @JoinColumn(name = "DRIVER_ID")
     private Driver driver;
-
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "CAR_RELEASE_REPORT_ID")
-    private CarReleaseReport carReleaseReport;
-
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "CAR_RETURN_REPORT_ID")
-    private CarReturnReport carReturnReport;
 
     @JsonIgnore
     @ManyToOne

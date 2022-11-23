@@ -18,9 +18,14 @@ public class ClientMapperTestSuite {
     void mapToClientTest() {
         //Given
         ClientMapper clientMapper = new ClientMapper();
-        ClientDto clientDto = new ClientDto(1L, "Mariusz Kowalski", "1 Maja", 1L, "43-202", "Zabrze", "Polska", null, TypeOfIdentificationNumber.NIP, 90010123948L, 54500099L, "mariusz.kowalski@onet.pl", Collections.emptyList(), Collections.emptyList());
+        ClientDto clientDto = new ClientDto(1L, "Mariusz Kowalski", "1 Maja",
+                "1", "43-202", "Zabrze", "Polska", null,
+                TypeOfIdentificationNumber.NIP, "90010123948", "54500099",
+                "mariusz.kowalski@onet.pl", Collections.emptyList(), Collections.emptyList());
+
         //When
         Client client = clientMapper.mapToClient(clientDto);
+
         //Then
         assertNotNull(client.getClientId());
         assertEquals("Mariusz Kowalski", client.getName());
@@ -30,9 +35,14 @@ public class ClientMapperTestSuite {
     void mapToClientDtoTest() {
         //Given
         ClientMapper clientMapper = new ClientMapper();
-        Client client = new Client(2L, "Tomasz Nowak", "Konstytucji", 19L, "43-200", "Opole", "Polska", "Opole", TypeOfIdentificationNumber.NIP, 7705043245L, 5006788890L, "tomasz.nowak@onet.pl", Collections.emptyList(), Collections.emptyList());
+        Client client = new Client(2L, "Tomasz Nowak", "Konstytucji", "19",
+                "43-200", "Opole", "Polska", "Opole",
+                TypeOfIdentificationNumber.NIP, "7705043245", "5006788890",
+                "tomasz.nowak@onet.pl", Collections.emptyList(), Collections.emptyList());
+
         //When
         ClientDto clientDto = clientMapper.mapToClientDto(client);
+
         //Then
         assertNotNull(clientDto.getClientId());
         assertEquals("Konstytucji", clientDto.getStreet());
@@ -43,8 +53,17 @@ public class ClientMapperTestSuite {
         //Given
         ClientMapper clientMapper = new ClientMapper();
         List<Client> clientList = new ArrayList<>();
-        Client client1 = new Client(1L, "Mariusz Kowalski", "1 Maja", 1L, "43-202", "Zabrze", "Polska", null, TypeOfIdentificationNumber.NIP, 90010123948L, 54500099L, "mariusz.kowalski@onet.pl", Collections.emptyList(), Collections.emptyList());
-        Client client2 = new Client(2L, "Tomasz Nowak", "Konstytucji", 19L, "43-200", "Opole", "Polska", "Opole", TypeOfIdentificationNumber.NIP, 7705043245L, 5006788890L, "tomasz.nowak@onet.pl", Collections.emptyList(), Collections.emptyList());
+
+        Client client1 = new Client(1L, "Mariusz Kowalski", "1 Maja", "1",
+                "43-202", "Zabrze", "Polska", null,
+                TypeOfIdentificationNumber.NIP, "90010123948", "54500099",
+                "mariusz.kowalski@onet.pl", Collections.emptyList(), Collections.emptyList());
+
+        Client client2 = new Client(2L, "Tomasz Nowak", "Konstytucji", "19",
+                "43-200", "Opole", "Polska", "Opole",
+                TypeOfIdentificationNumber.NIP, "7705043245", "5006788890",
+                "tomasz.nowak@onet.pl", Collections.emptyList(), Collections.emptyList());
+
         clientList.add(client1);
         clientList.add(client2);
         //When

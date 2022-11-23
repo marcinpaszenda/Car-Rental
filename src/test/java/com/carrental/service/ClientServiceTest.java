@@ -30,8 +30,17 @@ public class ClientServiceTest {
     void getAllClientsTest() {
         //Given
         List<Client> clientList = new ArrayList<>();
-        Client client1 = new Client(1L, "Mariusz Kowalski", "1 Maja", 1L, "43-202", "Zabrze", "Polska", null, TypeOfIdentificationNumber.NIP, 90010123948L, 54500099L, "mariusz.kowalski@onet.pl", null, null);
-        Client client2 = new Client(2L, "Tomasz Nowak", "Konstytucji", 19L, "43-200", "Opole", "Polska", "Opole", TypeOfIdentificationNumber.NIP, 7705043245L, 5006788890L, "tomasz.nowak@onet.pl", null, null);
+
+        Client client1 = new Client(1L, "Mariusz Kowalski", "1 Maja", "1",
+                "43-202", "Zabrze", "Polska", null, TypeOfIdentificationNumber.NIP,
+                "90010123948", "54500099", "mariusz.kowalski@onet.pl", null,
+                null);
+
+        Client client2 = new Client(2L, "Tomasz Nowak", "Konstytucji", "19",
+                "43-200", "Opole", "Polska", "Opole", TypeOfIdentificationNumber.NIP,
+                "7705043245", "5006788890", "tomasz.nowak@onet.pl", null,
+                null);
+
         clientList.add(client1);
         clientList.add(client2);
         when(clientRepository.findAll()).thenReturn(clientList);
@@ -44,7 +53,12 @@ public class ClientServiceTest {
     @Test
     void getClientTest() throws ClientNotFoundException {
         //Given
-        Client client1 = new Client(1L, "Mariusz Kowalski", "1 Maja", 1L, "43-202", "Zabrze", "Polska", null, TypeOfIdentificationNumber.NIP, 90010123948L, 54500099L, "mariusz.kowalski@onet.pl", null, null);
+
+        Client client1 = new Client(1L, "Mariusz Kowalski", "1 Maja", "1",
+                "43-202", "Zabrze", "Polska", null, TypeOfIdentificationNumber.NIP,
+                "90010123948", "54500099", "mariusz.kowalski@onet.pl", null,
+                null);
+
         when(clientRepository.findById(1L)).thenReturn(Optional.of(client1));
         //When
         Client result = clientService.findClientById(1L);
@@ -55,7 +69,12 @@ public class ClientServiceTest {
     @Test
     void saveClientTest() throws ClientNotFoundException {
         //Given
-        Client client1 = new Client(1L, "Mariusz Kowalski", "1 Maja", 1L, "43-202", "Zabrze", "Polska", null, TypeOfIdentificationNumber.NIP, 90010123948L, 54500099L, "mariusz.kowalski@onet.pl", null, null);
+
+        Client client1 = new Client(1L, "Mariusz Kowalski", "1 Maja", "1",
+                "43-202", "Zabrze", "Polska", null, TypeOfIdentificationNumber.NIP,
+                "90010123948", "54500099", "mariusz.kowalski@onet.pl", null,
+                null);
+
         when(clientRepository.findById(1L)).thenReturn(Optional.of(client1));
         //When
         Client updateClient = clientService.findClientById(1L);

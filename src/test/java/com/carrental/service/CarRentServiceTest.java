@@ -33,19 +33,72 @@ public class CarRentServiceTest {
     void getAllCarRentsTest() {
         //Given
         List<CarRent> carRentList = new ArrayList<>();
-        CarRent carRent1 = new CarRent(1L, LocalDate.of(2022, 3, 2),
-                LocalTime.of(10, 10), LocalDate.of(2022, 3, 12),
-                LocalTime.of(20, 20), 10L,
-                Currency.PLN, BigDecimal.valueOf(100), null, null,
-                null, DailyMileageLimit.TAK, TravelAbroad.NIE, RegistrationCertificate.NIE,
-                AbolitionDeductibleInDamage.NIE, null, false, null,
-                null, null, null, null);
-        CarRent carRent2 = new CarRent(2L, LocalDate.of(2022, 6, 6),
-                LocalTime.of(12, 12), LocalDate.of(2022, 6, 12),
-                LocalTime.of(10, 2), 6L, Currency.PLN, BigDecimal.valueOf(150),
-                null, null, null, DailyMileageLimit.TAK, TravelAbroad.NIE,
-                RegistrationCertificate.NIE, AbolitionDeductibleInDamage.NIE, null, false, null,
-                null, null, null, null);
+
+        CarRent carRent1 = CarRent.builder()
+                .carRentId(1L)
+                .rentalDate(LocalDate.of(2022, 3, 2))
+                .rentalHour(LocalTime.of(10, 10))
+                .returnDate(LocalDate.of(2022, 3, 12))
+                .returnHour(LocalTime.of(20, 20))
+                .rentalDayLength(10)
+                .currency(Currency.PLN)
+                .dailyRate(BigDecimal.valueOf(100))
+                .additionalCosts(BigDecimal.ZERO)
+                .deposit(BigDecimal.ZERO)
+                .totalCost(BigDecimal.ZERO)
+                .dailyMileageLimit(DailyMileageLimit.NIE)
+                .travelAbroad(TravelAbroad.NIE)
+                .registrationCertificate(RegistrationCertificate.NIE)
+                .abolitionDeductibleInDamage(AbolitionDeductibleInDamage.NIE)
+                .abolitionFee(BigDecimal.ZERO)
+                .isActive(false)
+                .cleanCarBodyRelease(CleanCarBody.NIE)
+                .cleanCarInteriorRelease(CleanCarInterior.NIE)
+                .amountOfFuelRelease("PEŁNY")
+                .carMileageRelease(50000L)
+                .remarksRelease(null)
+                .cleanCarBodyReturn(CleanCarBody.NIE)
+                .cleanCarInteriorReturn(CleanCarInterior.NIE)
+                .amountOfFuelReturn("PEŁNY")
+                .carMileageReturn(55000L)
+                .newCarDamage(null)
+                .remarksReturn(null)
+                .depositRefund(BigDecimal.ZERO)
+                .build();
+
+        CarRent carRent2 = CarRent.builder()
+                .carRentId(2L)
+                .rentalDate(LocalDate.of(2022, 3, 2))
+                .rentalHour(LocalTime.of(10, 10))
+                .returnDate(LocalDate.of(2022, 3, 12))
+                .returnHour(LocalTime.of(20, 20))
+                .rentalDayLength(10)
+                .currency(Currency.PLN)
+                .dailyRate(BigDecimal.valueOf(100))
+                .additionalCosts(BigDecimal.ZERO)
+                .deposit(BigDecimal.ZERO)
+                .totalCost(BigDecimal.ZERO)
+                .dailyMileageLimit(DailyMileageLimit.NIE)
+                .travelAbroad(TravelAbroad.NIE)
+                .registrationCertificate(RegistrationCertificate.NIE)
+                .abolitionDeductibleInDamage(AbolitionDeductibleInDamage.NIE)
+                .abolitionFee(BigDecimal.ZERO)
+                .isActive(false)
+                .cleanCarBodyRelease(CleanCarBody.NIE)
+                .cleanCarInteriorRelease(CleanCarInterior.NIE)
+                .amountOfFuelRelease("PEŁNY")
+                .carMileageRelease(50000L)
+                .remarksRelease(null)
+                .cleanCarBodyReturn(CleanCarBody.NIE)
+                .cleanCarInteriorReturn(CleanCarInterior.NIE)
+                .amountOfFuelReturn("PEŁNY")
+                .carMileageReturn(55000L)
+                .newCarDamage(null)
+                .remarksReturn(null)
+                .depositRefund(BigDecimal.ZERO)
+                .build();
+
+
         carRentList.add(carRent1);
         carRentList.add(carRent2);
         when(carRentRepository.findAll()).thenReturn(carRentList);
@@ -57,14 +110,39 @@ public class CarRentServiceTest {
 
     @Test
     void getCarRentTest() throws CarRentNotFoundException {
-        //Given
-        CarRent carRent1 = new CarRent(1L, LocalDate.of(2022, 3, 2),
-                LocalTime.of(10, 10), LocalDate.of(2022, 3, 12),
-                LocalTime.of(20, 20), 10L,
-                Currency.PLN, BigDecimal.valueOf(100), null, null,
-                null, DailyMileageLimit.TAK, TravelAbroad.NIE, RegistrationCertificate.NIE,
-                AbolitionDeductibleInDamage.NIE, null, false, null,
-                null, null, null, null);
+
+        CarRent carRent1 = CarRent.builder()
+                .carRentId(1L)
+                .rentalDate(LocalDate.of(2022, 3, 2))
+                .rentalHour(LocalTime.of(10, 10))
+                .returnDate(LocalDate.of(2022, 3, 12))
+                .returnHour(LocalTime.of(20, 20))
+                .rentalDayLength(10)
+                .currency(Currency.PLN)
+                .dailyRate(BigDecimal.valueOf(100))
+                .additionalCosts(BigDecimal.ZERO)
+                .deposit(BigDecimal.ZERO)
+                .totalCost(BigDecimal.ZERO)
+                .dailyMileageLimit(DailyMileageLimit.NIE)
+                .travelAbroad(TravelAbroad.NIE)
+                .registrationCertificate(RegistrationCertificate.NIE)
+                .abolitionDeductibleInDamage(AbolitionDeductibleInDamage.NIE)
+                .abolitionFee(BigDecimal.ZERO)
+                .isActive(false)
+                .cleanCarBodyRelease(CleanCarBody.NIE)
+                .cleanCarInteriorRelease(CleanCarInterior.NIE)
+                .amountOfFuelRelease("PEŁNY")
+                .carMileageRelease(50000L)
+                .remarksRelease(null)
+                .cleanCarBodyReturn(CleanCarBody.NIE)
+                .cleanCarInteriorReturn(CleanCarInterior.NIE)
+                .amountOfFuelReturn("PEŁNY")
+                .carMileageReturn(55000L)
+                .newCarDamage(null)
+                .remarksReturn(null)
+                .depositRefund(BigDecimal.ZERO)
+                .build();
+
         when(carRentRepository.findById(1L)).thenReturn(Optional.of(carRent1));
         //When
         CarRent result = carRentService.findCarRentById(1L);
@@ -74,14 +152,39 @@ public class CarRentServiceTest {
 
     @Test
     void saveCarRentTest() throws CarRentNotFoundException {
-        //Given
-        CarRent carRent1 = new CarRent(1L, LocalDate.of(2022, 3, 2),
-                LocalTime.of(10, 10), LocalDate.of(2022, 3, 12),
-                LocalTime.of(20, 20), 10L,
-                Currency.PLN, BigDecimal.valueOf(100), null, null,
-                null, DailyMileageLimit.TAK, TravelAbroad.NIE, RegistrationCertificate.NIE,
-                AbolitionDeductibleInDamage.NIE, null, false, null,
-                null, null, null, null);
+
+        CarRent carRent1 = CarRent.builder()
+                .carRentId(1L)
+                .rentalDate(LocalDate.of(2022, 3, 2))
+                .rentalHour(LocalTime.of(10, 10))
+                .returnDate(LocalDate.of(2022, 3, 12))
+                .returnHour(LocalTime.of(20, 20))
+                .rentalDayLength(10)
+                .currency(Currency.PLN)
+                .dailyRate(BigDecimal.valueOf(100))
+                .additionalCosts(BigDecimal.ZERO)
+                .deposit(BigDecimal.ZERO)
+                .totalCost(BigDecimal.ZERO)
+                .dailyMileageLimit(DailyMileageLimit.NIE)
+                .travelAbroad(TravelAbroad.NIE)
+                .registrationCertificate(RegistrationCertificate.NIE)
+                .abolitionDeductibleInDamage(AbolitionDeductibleInDamage.NIE)
+                .abolitionFee(BigDecimal.ZERO)
+                .isActive(false)
+                .cleanCarBodyRelease(CleanCarBody.NIE)
+                .cleanCarInteriorRelease(CleanCarInterior.NIE)
+                .amountOfFuelRelease("PEŁNY")
+                .carMileageRelease(50000L)
+                .remarksRelease(null)
+                .cleanCarBodyReturn(CleanCarBody.NIE)
+                .cleanCarInteriorReturn(CleanCarInterior.NIE)
+                .amountOfFuelReturn("PEŁNY")
+                .carMileageReturn(55000L)
+                .newCarDamage(null)
+                .remarksReturn(null)
+                .depositRefund(BigDecimal.ZERO)
+                .build();
+
         when(carRentRepository.findById(1L)).thenReturn(Optional.of(carRent1));
         //When
         CarRent updateCarRent = carRentService.findCarRentById(1L);

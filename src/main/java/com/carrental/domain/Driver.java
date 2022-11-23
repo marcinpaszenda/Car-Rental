@@ -33,7 +33,7 @@ public class Driver {
     private String drivingLicenseNumber;
 
     @Column(name = "PHONE_NUMBER")
-    private Long phoneNumber;
+    private String phoneNumber;
 
     @JsonIgnore
     @ManyToOne
@@ -43,7 +43,7 @@ public class Driver {
     @JsonIgnore
     @OneToMany(
             targetEntity = CarRent.class,
-            mappedBy = "client",
+            mappedBy = "driver",
             cascade = {CascadeType.MERGE, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )

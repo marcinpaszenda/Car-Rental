@@ -6,7 +6,6 @@ import com.carrental.exceptions.*;
 import com.carrental.mapper.CarRentMapper;
 import com.carrental.repository.*;
 import com.carrental.service.CarRentService;
-import com.carrental.service.CarReturnReportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,8 +25,6 @@ public class CarRentController {
     private final DriverRepository driverRepository;
     private final CarRepository carRepository;
     private final ClientRepository clientRepository;
-    private final CarReleaseReportRepository carReleaseReportRepository;
-    private final CarReturnReportRepository carReturnReportRepository;
 
     @GetMapping
     public ResponseEntity<List<CarRentDto>> getCarRents() {
@@ -44,15 +41,21 @@ public class CarRentController {
     public ResponseEntity<CarRent> addCarRent(@RequestBody CarRentDto carRentDto) {
         CarRent carRent = carRentMapper.mapToCarRent(carRentDto);
         carRentService.saveCarRent(carRent);
-
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(carRent);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CarRentDto> updateCarRent(@RequestBody CarRentDto carRentDto) throws CarRentNotFoundException {
+    public ResponseEntity<CarRentDto> updateCarRent(@RequestBody CarRentDto carRentDto) throws CarRentNotFoundException, CarNotFoundException {
         CarRent carRent = carRentMapper.mapToCarRent(carRentDto);
         CarRent updatedCarRent = carRentService.updateCarRent(carRent);
+        //dodajemy aktualny przebieg pojazdu po zwrocie
+        Long carRentId = carRent.getCarRentId();
+        Long newCarMileage = carRent.getCarMileageReturn();
+        carRentService.updateCarMileage(carRentId, newCarMileage);
+        // dodajemy ewentualne nowe uszkodzenia do car
+        String newDamage = carRent.getNewCarDamage();
+        carRentService.addNewDamageToCar(carRentId, newDamage);
         return ResponseEntity.ok().body(carRentMapper.mapToCarRentDto(updatedCarRent));
     }
 
@@ -71,10 +74,13 @@ public class CarRentController {
     }
 
     @PutMapping("{carRentId}/cars/{carId}")
-    public Car assignCarToCarRent(@PathVariable Long carRentId, @PathVariable Long carId) {
+    public Car assignCarToCarRent(@PathVariable Long carRentId, @PathVariable Long carId) throws CarNotFoundException {
         CarRent carRent = carRentRepository.findById(carRentId).get();
         Car car = carRepository.findById(carId).get();
         carRent.setCar(car);
+        //dodajemy aktualny przebieg pojazdu przed wydaniem
+        Long newCarMileage = carRent.getCarMileageRelease();
+        carRentService.updateCarMileage(carRentId, newCarMileage);
         return carRentRepository.save(carRent).getCar();
     }
 
@@ -84,36 +90,5 @@ public class CarRentController {
         Client client = clientRepository.findById(clientId).get();
         carRent.setClient(client);
         return carRentRepository.save(carRent).getClient();
-    }
-
-    @PutMapping("{carRentId}/carReleaseReport/{carReleaseReportId}")
-    public CarReleaseReport assignCarReleaseReportToCarRent(@PathVariable Long carRentId, @PathVariable Long carReleaseReportId) {
-        CarRent carRent = carRentRepository.findById(carRentId).get();
-        CarReleaseReport carReleaseReport = carReleaseReportRepository.findById(carReleaseReportId).get();
-        carRent.setCarReleaseReport(carReleaseReport);
-        //dodajemy aktualny przebieg pojazdu przed wydaniem
-        Long newCarMileage = carReleaseReport.getCarMileage();
-        carRentService.updateCarMileage(carRentId, newCarMileage);
-        //ustawiamy status wypożyczenia na aktywny
-        carRent.setActive(true);
-
-        return carRentRepository.save(carRent).getCarReleaseReport();
-    }
-
-    @PutMapping("{carRentId}/carReturnReport/{carReturnReportId}")
-    public CarReturnReport assignCarReturnReportToCarRent(@PathVariable Long carRentId, @PathVariable Long carReturnReportId) {
-        CarRent carRent = carRentRepository.findById(carRentId).get();
-        CarReturnReport carReturnReport = carReturnReportRepository.findById(carReturnReportId).get();
-        carRent.setCarReturnReport(carReturnReport);
-        // dodajemy ewentualne nowe uszkodzenia do car
-        String newDamage = carReturnReport.getNewCarDamage();
-        carRentService.addNewDamageToCar(carRentId, newDamage);
-        //dodajemy aktualny przebieg pojazdu po zwrocie
-        Long newCarMileage = carReturnReport.getCarMileage();
-        carRentService.updateCarMileage(carRentId, newCarMileage);
-        //ustawiamy status wypożyczenia na zakończone
-        carRent.setActive(false);
-
-        return carRentRepository.save(carRent).getCarReturnReport();
     }
 }

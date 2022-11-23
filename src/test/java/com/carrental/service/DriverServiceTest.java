@@ -33,8 +33,13 @@ public class DriverServiceTest {
         List<CarRent> carRents = new ArrayList<>();
         Client client = new Client();
         List<Driver> driverList = new ArrayList<>();
-        Driver driver1 = new Driver(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L, client, carRents);
-        Driver driver2 = new Driver(6L, "Arthur Bart", "4MN/09876/P", "2094/FE4/231", 789232000L, client, carRents);
+
+        Driver driver1 = new Driver(5L, "Thomas Smith", "444/3445/RE/3",
+                "33/FE/5655", "799330432", client, carRents);
+
+        Driver driver2 = new Driver(6L, "Arthur Bart", "4MN/09876/P",
+                "2094/FE4/231", "789232000", client, carRents);
+
         driverList.add(driver1);
         driverList.add(driver2);
         when(driverRepository.findAll()).thenReturn(driverList);
@@ -49,7 +54,10 @@ public class DriverServiceTest {
         //Given
         List<CarRent> carRents = new ArrayList<>();
         Client client = new Client();
-        Driver driver1 = new Driver(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L, client, carRents);
+
+        Driver driver1 = new Driver(5L, "Thomas Smith", "444/3445/RE/3",
+                "33/FE/5655", "799330432", client, carRents);
+
         when(driverRepository.findById(5L)).thenReturn(Optional.of(driver1));
         //When
         Driver result = driverService.findDriverById(5L);
@@ -62,7 +70,10 @@ public class DriverServiceTest {
         //Given
         List<CarRent> carRents = new ArrayList<>();
         Client client = new Client();
-        Driver driver1 = new Driver(5L, "Thomas Smith", "444/3445/RE/3", "33/FE/5655", 799330432L, client, carRents);
+
+        Driver driver1 = new Driver(5L, "Thomas Smith", "444/3445/RE/3",
+                "33/FE/5655", "799330432", client, carRents);
+
         when(driverRepository.findById(5L)).thenReturn(Optional.of(driver1));
         //When
         Driver updateDriver = driverService.findDriverById(5L);

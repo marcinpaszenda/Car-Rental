@@ -24,7 +24,7 @@ public class DriverRepositoryTestSuite {
                 .driverName("John Smith")
                 .identityCardNumber("444/T55/E")
                 .drivingLicenseNumber("223302/W/11")
-                .phoneNumber(505333222L)
+                .phoneNumber("505333222")
                 .build();
     }
 

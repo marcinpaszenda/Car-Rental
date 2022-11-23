@@ -18,6 +18,6 @@ public class DriverDto {
     private String driverName;
     private String identityCardNumber;
     private String drivingLicenseNumber;
-    private Long phoneNumber;
+    private String phoneNumber;
     private List<CarRent> carRents;
 }

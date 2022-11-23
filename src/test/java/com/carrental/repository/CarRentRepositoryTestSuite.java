@@ -31,7 +31,7 @@ public class CarRentRepositoryTestSuite {
                 .rentalHour(LocalTime.of(12, 12))
                 .returnDate(LocalDate.of(2022, 9, 22))
                 .returnHour(LocalTime.of(15, 55))
-                .rentalDayLength(10L)
+                .rentalDayLength(10)
                 .currency(Currency.PLN)
                 .dailyRate(BigDecimal.valueOf(100.00))
                 .additionalCosts(BigDecimal.ZERO)

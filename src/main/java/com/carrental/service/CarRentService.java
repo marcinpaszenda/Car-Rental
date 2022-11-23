@@ -2,18 +2,23 @@ package com.carrental.service;
 
 import com.carrental.domain.Car;
 import com.carrental.domain.CarRent;
+import com.carrental.exceptions.CarNotFoundException;
 import com.carrental.exceptions.CarRentNotFoundException;
 import com.carrental.repository.CarRentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class CarRentService {
 
     private final CarRentRepository carRentRepository;
+    private final CarService carService;
 
     public List<CarRent> getAllCarRents() {
         return carRentRepository.findAll();
@@ -45,7 +50,7 @@ public class CarRentService {
     }
 
     // metoda dodająca nowe uszkodzenia do pojazdu
-    public void addNewDamageToCar(Long carRentId, String newDamage) {
+    public void addNewDamageToCar(Long carRentId, String newDamage) throws CarNotFoundException {
         if (newDamage == null) {
             return;
         } else {
@@ -54,17 +59,25 @@ public class CarRentService {
             String oldDamage = carRent.getCar().getCarDamage();
             String newStatusDamage = oldDamage + ", " + newDamage;
             car.setCarDamage(newStatusDamage);
+            carService.updateCar(car);
         }
     }
 
     // metoda aktualizująca przebieg pojazdu
-    public void updateCarMileage(Long carRentId, Long newCarMileage) {
+    public void updateCarMileage(Long carRentId, Long newCarMileage) throws CarNotFoundException {
         if (newCarMileage == null) {
             return;
         } else {
             CarRent carRent = carRentRepository.findById(carRentId).get();
             Car car = carRent.getCar();
             car.setCarMileage(newCarMileage);
+            carService.updateCar(car);
         }
+    }
+
+    public List<CarRent> carRentActiveStatus(final List<CarRent> carRentActive) {
+        return carRentActive.stream()
+                .filter(carRent -> carRent.getReturnDate().isAfter(LocalDate.now()) && carRent.getReturnHour().isAfter(LocalTime.now()))
+                .collect(Collectors.toList());
     }
 }

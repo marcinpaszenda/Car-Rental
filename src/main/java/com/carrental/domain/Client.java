@@ -28,10 +28,10 @@ public class Client {
     @Column(name = "STREET")
     private String street;
 
-    @Column(name = "STREETNUMBER")
-    private Long streetNumber;
+    @Column(name = "STREET_NUMBER")
+    private String streetNumber;
 
-    @Column(name = "POSTALCODE")
+    @Column(name = "POSTAL_CODE")
     private String postalCode;
 
     @Column(name = "CITY")
@@ -47,10 +47,10 @@ public class Client {
     private TypeOfIdentificationNumber typeOfIdentificationNumber;
 
     @Column(name = "IDENTIFICATION_NUMBER")
-    private Long identificationNumber;
+    private String identificationNumber;
 
     @Column(name = "PHONE_NUMBER")
-    private Long phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "EMAIL")
     private String email;

@@ -24,14 +24,14 @@ public class ClientRepositoryTestSuite {
         client = Client.builder()
                 .name("Mariusz Nowak")
                 .street("Piłsudskiego")
-                .streetNumber(55L)
+                .streetNumber("55")
                 .postalCode("43-100")
                 .city("Katowice")
                 .country("Polska")
                 .placeOfBirth("Chorzów")
                 .typeOfIdentificationNumber(TypeOfIdentificationNumber.PESEL)
-                .identificationNumber(88121205453L)
-                .phoneNumber(501211223L)
+                .identificationNumber("88121205453")
+                .phoneNumber("501211223")
                 .email("m.nowak@wp.pl")
                 .build();
     }
@@ -56,7 +56,7 @@ public class ClientRepositoryTestSuite {
         //When
         Client result = clientRepository.findById(client.getClientId()).get();
         //Then
-        assertEquals(501211223L, result.getPhoneNumber());
+        assertEquals("501211223", result.getPhoneNumber());
         assertEquals(emailClient, result.getEmail());
         //CleanUp
         clientRepository.deleteById(client.getClientId());

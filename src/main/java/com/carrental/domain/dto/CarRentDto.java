@@ -4,6 +4,7 @@ import com.carrental.domain.*;
 import com.carrental.domain.enums.*;
 import lombok.*;
 
+import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,7 +21,7 @@ public class CarRentDto {
     private LocalTime rentalHour;
     private LocalDate returnDate;
     private LocalTime returnHour;
-    private Long rentalDayLength;
+    private int rentalDayLength;
     private Currency currency;
     private BigDecimal dailyRate;
     private BigDecimal additionalCosts;
@@ -32,9 +33,24 @@ public class CarRentDto {
     private AbolitionDeductibleInDamage abolitionDeductibleInDamage;
     private BigDecimal abolitionFee;
     private boolean isActive;
+
+    private CleanCarBody cleanCarBodyRelease;
+    private CleanCarInterior cleanCarInteriorRelease;
+    private String amountOfFuelRelease;
+    private Long carMileageRelease;
+    private String remarksRelease;
+
+    private CleanCarBody cleanCarBodyReturn;
+    private CleanCarInterior cleanCarInteriorReturn;
+    private String amountOfFuelReturn;
+    private Long carMileageReturn;
+    private String newCarDamage;
+    private String remarksReturn;
+    private BigDecimal depositRefund;
+
     private Car car;
     private Driver driver;
     private Client client;
-    private CarReleaseReport carReleaseReport;
-    private CarReturnReport carReturnReport;
+
+
 }

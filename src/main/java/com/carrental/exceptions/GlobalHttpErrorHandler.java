@@ -24,16 +24,6 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>("Driver with given ID doesn't exist", HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(CarReleaseReportNotFoundException.class)
-    public ResponseEntity<Object> handleCarReleaseReportNotFoundException(CarReleaseReportNotFoundException carReleaseReportNotFoundException) {
-        return new ResponseEntity<>("Car release report with given ID doesn't exist", HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(CarReturnReportNotFoundException.class)
-    public ResponseEntity<Object> handleCarReturnReportNotFoundException(CarReturnReportNotFoundException carReturnReportNotFoundException) {
-        return new ResponseEntity<>("Car return report with given ID doesn't exist", HttpStatus.BAD_REQUEST);
-    }
-
     @ExceptionHandler(CarRentNotFoundException.class)
     public ResponseEntity<Object> handleCarRentNotFoundException(CarRentNotFoundException carRentNotFoundException) {
         return new ResponseEntity<>("Car rent with given ID doesn't exist", HttpStatus.BAD_REQUEST);
