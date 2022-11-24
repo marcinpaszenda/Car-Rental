@@ -31,7 +31,6 @@ public class CarRentMapper {
                 .registrationCertificate(carRentDto.getRegistrationCertificate())
                 .abolitionDeductibleInDamage(carRentDto.getAbolitionDeductibleInDamage())
                 .abolitionFee(carRentDto.getAbolitionFee())
-//                .isActive(carRentDto.isActive())
 
                 .cleanCarBodyRelease(carRentDto.getCleanCarBodyRelease())
                 .cleanCarInteriorRelease(carRentDto.getCleanCarInteriorRelease())
@@ -58,7 +57,7 @@ public class CarRentMapper {
         return new CarRentDto(
         carRent.getCarRentId(),
         carRent.getRentalDate(),
-        carRent.getReturnHour(),
+        carRent.getRentalHour(),
         carRent.getReturnDate(),
         carRent.getReturnHour(),
         carRent.getRentalDayLength(),
@@ -72,7 +71,6 @@ public class CarRentMapper {
         carRent.getRegistrationCertificate(),
         carRent.getAbolitionDeductibleInDamage(),
         carRent.getAbolitionFee(),
-        carRent.isActive(),
 
         carRent.getCleanCarBodyRelease(),
         carRent.getCleanCarInteriorRelease(),

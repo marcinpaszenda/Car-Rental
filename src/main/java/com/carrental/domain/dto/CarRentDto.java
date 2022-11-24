@@ -32,7 +32,6 @@ public class CarRentDto {
     private RegistrationCertificate registrationCertificate;
     private AbolitionDeductibleInDamage abolitionDeductibleInDamage;
     private BigDecimal abolitionFee;
-    private boolean isActive;
 
     private CleanCarBody cleanCarBodyRelease;
     private CleanCarInterior cleanCarInteriorRelease;

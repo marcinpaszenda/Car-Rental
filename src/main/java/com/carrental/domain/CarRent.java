@@ -70,9 +70,6 @@ public class CarRent {
     @Column(name = "ABOLITION_FEE")
     private BigDecimal abolitionFee;
 
-    @Column(name = "IS_ACTIVE_CAR_RENT")
-    private boolean isActive;
-
 
     @Column(name = "CLEAN_CAR_BODY_RELEASE")
     private CleanCarBody cleanCarBodyRelease;
