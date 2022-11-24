@@ -17,7 +17,7 @@ public class CarRentMapper {
         return CarRent.builder()
                 .carRentId(carRentDto.getCarRentId())
                 .rentalDate(carRentDto.getRentalDate())
-                .returnHour(carRentDto.getRentalHour())
+                .rentalHour(carRentDto.getRentalHour())
                 .returnDate(carRentDto.getReturnDate())
                 .returnHour(carRentDto.getReturnHour())
                 .rentalDayLength(carRentDto.getRentalDayLength())
