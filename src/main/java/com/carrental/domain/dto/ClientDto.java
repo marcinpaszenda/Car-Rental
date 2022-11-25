@@ -26,6 +26,8 @@ public class ClientDto {
     private String placeOfBirth;
     private TypeOfIdentificationNumber typeOfIdentificationNumber;
     private String identificationNumber;
+    private String identityCardNumber;
+    private String drivingLicenseNumber;
     private String phoneNumber;
     private String email;
     private List<Driver> drivers;

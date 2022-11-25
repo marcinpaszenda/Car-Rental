@@ -8,10 +8,7 @@ import com.carrental.repository.CarRentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -51,12 +48,16 @@ public class CarRentService {
 
     // metoda dodająca nowe uszkodzenia do pojazdu
     public void addNewDamageToCar(Long carRentId, String newDamage) throws CarNotFoundException {
+        CarRent carRent = carRentRepository.findById(carRentId).get();
+        Car car = carRent.getCar();
+        String oldDamage = carRent.getCar().getCarDamage();
         if (newDamage == null || newDamage.equals("")) {
             return;
+        } else if (oldDamage == null) {
+            String newStatusDamage = newDamage;
+            car.setCarDamage(newStatusDamage);
+            carService.updateCar(car);
         } else {
-            CarRent carRent = carRentRepository.findById(carRentId).get();
-            Car car = carRent.getCar();
-            String oldDamage = carRent.getCar().getCarDamage();
             String newStatusDamage = oldDamage + ", " + newDamage;
             car.setCarDamage(newStatusDamage);
             carService.updateCar(car);
@@ -73,11 +74,5 @@ public class CarRentService {
             car.setCarMileage(newCarMileage);
             carService.updateCar(car);
         }
-    }
-
-    public List<CarRent> carRentActiveStatus(final List<CarRent> carRentActive) {
-        return carRentActive.stream()
-                .filter(carRent -> carRent.getReturnDate().isAfter(LocalDate.now()) && carRent.getReturnHour().isAfter(LocalTime.now()))
-                .collect(Collectors.toList());
     }
 }

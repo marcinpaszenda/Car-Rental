@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -49,6 +48,12 @@ public class Client {
     @Column(name = "IDENTIFICATION_NUMBER")
     private String identificationNumber;
 
+    @Column(name = "IDENTITY_CARD_NUMBER")
+    private String identityCardNumber;
+
+    @Column(name = "DRIVING_LICENSE_NUMBER")
+    private String drivingLicenseNumber;
+
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
@@ -62,7 +67,7 @@ public class Client {
             cascade = {CascadeType.MERGE, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
-    public List<Driver> drivers = new ArrayList<>();
+    public List<Driver> drivers;
 
     @JsonIgnore
     @OneToMany(
@@ -71,6 +76,6 @@ public class Client {
             cascade = {CascadeType.MERGE, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
-    public List<CarRent> carRents = new ArrayList<>();
+    public List<CarRent> carRents;
 
 }

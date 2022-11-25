@@ -1,14 +1,10 @@
 package com.carrental.mapper;
 
 import com.carrental.domain.Client;
-import com.carrental.domain.Driver;
 import com.carrental.domain.dto.ClientDto;
-import com.carrental.service.DriverService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +24,8 @@ public class ClientMapper {
                 .placeOfBirth(clientDto.getPlaceOfBirth())
                 .typeOfIdentificationNumber(clientDto.getTypeOfIdentificationNumber())
                 .identificationNumber(clientDto.getIdentificationNumber())
+                .identityCardNumber(clientDto.getIdentityCardNumber())
+                .drivingLicenseNumber(clientDto.getDrivingLicenseNumber())
                 .phoneNumber(clientDto.getPhoneNumber())
                 .email(clientDto.getEmail())
                 .drivers(clientDto.getDrivers())
@@ -47,10 +45,12 @@ public class ClientMapper {
                 client.getPlaceOfBirth(),
                 client.getTypeOfIdentificationNumber(),
                 client.getIdentificationNumber(),
+                client.getIdentityCardNumber(),
+                client.getDrivingLicenseNumber(),
                 client.getPhoneNumber(),
                 client.getEmail(),
-                new ArrayList<>(client.getDrivers()),
-                new ArrayList<>(client.getCarRents())
+                client.getDrivers(),
+                client.getCarRents()
         );
     }
 
