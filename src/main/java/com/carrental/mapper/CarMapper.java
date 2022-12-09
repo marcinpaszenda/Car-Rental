@@ -13,10 +13,11 @@ public class CarMapper {
     public Car mapToCar(final CarDto carDto) {
         return new Car(
                 carDto.getCarId(),
+                carDto.getCar(),
                 carDto.getCarBrand(),
                 carDto.getRegistrationNumber(),
                 carDto.getCarMileage(),
-                carDto.getVinNumber(),
+                carDto.getCarStatus(),
                 carDto.getCarDamage(),
                 carDto.getCarRentList()
         );
@@ -25,10 +26,11 @@ public class CarMapper {
     public CarDto mapToCarDto(final Car car) {
         return new CarDto(
                 car.getCarId(),
+                car.getCar(),
                 car.getCarBrand(),
                 car.getRegistrationNumber(),
                 car.getCarMileage(),
-                car.getVinNumber(),
+                car.getCarStatus(),
                 car.getCarDamage(),
                 car.getCarRentList()
         );

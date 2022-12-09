@@ -57,6 +57,8 @@ public class CarRentService {
             String newStatusDamage = newDamage;
             car.setCarDamage(newStatusDamage);
             carService.updateCar(car);
+        } else if (oldDamage.endsWith(newDamage)) {
+            return;
         } else {
             String newStatusDamage = oldDamage + ", " + newDamage;
             car.setCarDamage(newStatusDamage);

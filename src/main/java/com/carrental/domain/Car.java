@@ -1,5 +1,6 @@
 package com.carrental.domain;
 
+import com.carrental.domain.enums.CarStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -22,6 +23,9 @@ public class Car {
     @Column(name = "CAR_ID", unique = true)
     private Long carId;
 
+    @Column(name = "CAR")
+    private String car;
+
     @Column(name = "CAR_BRAND")
     private String carBrand;
 
@@ -31,8 +35,8 @@ public class Car {
     @Column(name = "CAR_MILEAGE")
     private Long carMileage;
 
-    @Column(name = "VIN_NUMBER")
-    private String vinNumber;
+    @Column(name = "CAR_STATUS")
+    private CarStatus carStatus;
 
     @Column(name = "CAR_DAMAGE")
     private String carDamage;

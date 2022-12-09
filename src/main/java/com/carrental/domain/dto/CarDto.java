@@ -1,6 +1,7 @@
 package com.carrental.domain.dto;
 
 import com.carrental.domain.CarRent;
+import com.carrental.domain.enums.CarStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +16,11 @@ import java.util.List;
 public class CarDto {
 
         private Long carId;
+        private String car;
         private String carBrand;
         private String registrationNumber;
         private Long carMileage;
-        private String vinNumber;
+        private CarStatus carStatus;
         private String carDamage;
         private List<CarRent> carRentList;
 }

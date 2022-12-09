@@ -22,8 +22,9 @@ public class CarController {
     private final CarMapper carMapper;
 
     @GetMapping
-    public ResponseEntity<List<CarDto>> getCars() {
+    public ResponseEntity<List<CarDto>> getCars() throws CarNotFoundException {
         List<Car> cars = carService.getAllCars();
+        carService.carStatus();
         return ResponseEntity.ok(carMapper.mapToCarDtoList(cars));
     }
 

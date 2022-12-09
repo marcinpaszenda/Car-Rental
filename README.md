@@ -24,7 +24,6 @@ The project uses the following technologies and tools to work properly:
 
 ### How to run
 
-- Backend: sample query [link]
 - Frontend: [repository_link]
 
 ### Project status
@@ -75,8 +74,7 @@ Projekt wykorzystuje następujące technologie i narzędzia:
 
 ### Uruchomienie
 
-- Backend: przykładowe zapytanie [link]
-- Frontend: na ten moment jedynie kod do repozytorium [repository_link]
+- Frontend:  [repository_link]
 
 ### Status projektu
 
@@ -89,5 +87,4 @@ Po tym etapie zacznę dodawać i rozwijać kolejne funkcjonalności.
 
 marcinpaszenda@gmail.com
 
-[link]:<https://car-rental-lemarcar.herokuapp.com/v1/carRents>
 [repository_link]:<https://github.com/marcinpaszenda/Car-Rental-Frontend>
